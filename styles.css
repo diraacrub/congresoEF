@@ -50,9 +50,9 @@ ul {
   line-height: 1.4;
 }
 
-.logo-ph   { width: 110px; height: 110px; flex-shrink: 0; }
-.crub-ph   { width: 100%; height: 200px; margin-bottom: 0.75rem; }
-.efei-ph   { width: 130px; height: 130px; flex-shrink: 0; }
+.logo-ph   { width: 110px; height: 110px; flex-shrink: 0; object-fit: contain; border-radius: 12px; }
+.crub-ph   { width: 100%; height: 200px; margin-bottom: 0.75rem; object-fit: cover; object-position: top; border-radius: 8px; display: block; }
+.efei-ph   { width: 130px; height: 130px; flex-shrink: 0; object-fit: contain; }
 
 /* ── Card ────────────────────────────────────────────────────────── */
 .card {
