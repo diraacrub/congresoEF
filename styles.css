@@ -447,6 +447,12 @@ ul {
   transform: translateY(-2px);
 }
 
+.form-expired {
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.85;
+}
+
 /* ── CONTACTO ────────────────────────────────────────────────────── */
 .contacto-box p {
   color: #4a5568;
