@@ -513,6 +513,97 @@ ul {
   color: #2c3e50;
 }
 
+/* Talleres: tarjetas con descripción */
+.taller-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.85rem;
+}
+
+.taller-card {
+  background: #fff;
+  border: 1px solid #e1e8ee;
+  border-left: 3px solid #1a7a40;
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+}
+
+.taller-card .taller-title {
+  color: #14375a;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+}
+
+.prog-body .taller-people {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+  font-size: 0.86rem;
+  margin-bottom: 0.5rem;
+}
+
+.taller-names {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.taller-inst {
+  color: #657080;
+}
+
+.taller-inst::before {
+  content: "·";
+  margin-right: 0.5rem;
+}
+
+.prog-body .taller-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #3d4a5c;
+  margin-bottom: 0.6rem;
+}
+
+.taller-facts {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.taller-facts li {
+  background: #eef6f1;
+  color: #1a5c33;
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
+}
+
+.taller-facts li span {
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
+
+.prog-toggle-all {
+  margin-left: auto;
+  background: #fff;
+  color: #14375a;
+  border: 1px solid #14375a;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.prog-toggle-all:hover {
+  background: #14375a;
+  color: #fff;
+}
+
 .prog-list {
   margin: 0;
   padding: 0.75rem 1rem 0.75rem 2.2rem;
@@ -772,6 +863,14 @@ ul {
 
   .prog-table {
     min-width: 560px;
+  }
+
+  .taller-list {
+    padding: 0.6rem;
+  }
+
+  .prog-toggle-all {
+    margin-left: 0;
   }
 }
 

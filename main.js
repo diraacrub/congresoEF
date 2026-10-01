@@ -28,6 +28,18 @@
     });
   });
 
+  // Programa: expandir / contraer todos los detalles
+  var toggleAll = document.querySelector('.prog-toggle-all');
+  if (toggleAll) {
+    var progDetails = document.querySelectorAll('#programa .prog-details');
+    toggleAll.addEventListener('click', function () {
+      var open = toggleAll.getAttribute('aria-pressed') !== 'true';
+      progDetails.forEach(function (d) { d.open = open; });
+      toggleAll.setAttribute('aria-pressed', open ? 'true' : 'false');
+      toggleAll.textContent = open ? 'Contraer todo el detalle' : 'Expandir todo el detalle';
+    });
+  }
+
   // Restore tab from URL hash on load (also for anchors inside a tab)
   var hash = window.location.hash.replace('#', '');
   var target = hash && document.getElementById(hash);

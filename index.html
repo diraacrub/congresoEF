@@ -221,6 +221,7 @@
           <a href="#prog-jueves" class="prog-day-link">Jueves 8</a>
           <a href="#prog-viernes" class="prog-day-link">Viernes 9</a>
           <a href="#prog-sabado" class="prog-day-link">Sábado 10</a>
+          <button type="button" class="prog-toggle-all" aria-pressed="false">Expandir todo el detalle</button>
         </nav>
 
         <!-- ===== JUEVES 8 ===== -->
@@ -269,18 +270,37 @@
               <h4>Diálogos y talleres</h4>
               <p><strong>Diálogos sobre el Panel 1</strong> · Lugar: Aula 1 · Coordina: Daniela Carrasco</p>
               <details class="prog-details">
-                <summary>Talleres <span class="prog-summary-meta">Coordina: María Salazar</span></summary>
-                <div class="prog-table-wrapper">
-                  <table class="prog-table">
-                    <thead><tr><th scope="col">Tallerista/s</th><th scope="col">Pertenencia institucional</th><th scope="col">Taller</th><th scope="col">Lugar</th><th scope="col">Cupo</th></tr></thead>
-                    <tbody>
-                      <tr><td>Luciano Mercado</td><td>Universidad Católica de Salta</td><td>Bitácora intempestiva. Una poética del AYNI (Recreación comunitaria)</td><td>Hall del Gimnasio</td><td>Máx. 40</td></tr>
-                      <tr><td>Rivarola Lucila<br>Sustersic Juan Pablo<br>Silva Marina</td><td>Universidad Nacional del Comahue Bariloche</td><td>El Ultimate Frisbee como deporte alternativo e inclusivo: implicancias en el juego mixto y autoarbitrado</td><td>Gimnasio CRUB</td><td>Máx. 30</td></tr>
-                      <tr><td>Perez Dontao<br>Bracco Luca</td><td>Universidad Nacional del Comahue Bariloche</td><td>Parkour como contenido curricular en las clases de Educación Física</td><td>Gimnasio CRUB</td><td>Máx. 10</td></tr>
-                      <tr><td>Pizzorno Federico<br>Magrini Luciano</td><td>Universidad Nacional del Comahue Bariloche</td><td>La enseñanza de las prácticas atléticas en la escuela. ¿Qué enseña la Educación Física?</td><td>Gimnasio ADEFUL</td><td>Máx. 40</td></tr>
-                      <tr><td>Galosi Carlos<br>Alder Ines<br>Baudaux Agustin</td><td>Universidad Nacional del Comahue Bariloche</td><td>El ciclismo y la Educación Física</td><td>Aula 11</td><td>Máx. 25</td></tr>
-                    </tbody>
-                  </table>
+                <summary>Talleres <span class="prog-summary-meta">5 talleres · Coordina: María Salazar</span></summary>
+                <div class="taller-list">
+                  <article class="taller-card">
+                    <h5 class="taller-title">“Bitácora intempestiva”. Una poética del AYNI (Recreación comunitaria)</h5>
+                    <p class="taller-people"><span class="taller-names">Luciano Mercado</span><span class="taller-inst">Universidad Católica de Salta</span></p>
+                    <p class="taller-desc">Una propuesta para transitar desde la Recreación un viaje al encuentro desde la metáfora puesta en juego. Jugando nos vamos a cuestionar sobre ¿Cómo construir espacios de esperanza, dignidad y transformación social desde una Educación Física Crítica y sensible?</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Hall del Gimnasio</li><li><span>Cupo</span>Máx. 40</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">El Ultimate Frisbee como deporte alternativo e inclusivo: implicancias en el juego mixto y autoarbitrado</h5>
+                    <p class="taller-people"><span class="taller-names">Rivarola Lucila, Sustersic Juan Pablo, Silva Marina</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <p class="taller-desc">Ultimate Frisbee, un deporte mixto, sin contacto y autoarbitrado, basado en el respeto, la cooperación y el diálogo. A través de la práctica y la reflexión pedagógica, exploraremos sus posibilidades como herramienta educativa e inclusiva en Educación Física.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>Máx. 30</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">Parkour como contenido curricular en las clases de Educación Física</h5>
+                    <p class="taller-people"><span class="taller-names">Perez Dontao, Bracco Luca</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>Máx. 10</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">La enseñanza de las prácticas atléticas en la escuela. ¿Qué enseña la Educación Física?</h5>
+                    <p class="taller-people"><span class="taller-names">Pizzorno Federico, Magrini Luciano</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <p class="taller-desc">Un lugar para encontrarnos a reflexionar sobre la enseñanza de las prácticas atléticas en Educación Física escolar. Perspectivas, dimensiones y efectos corporales.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio ADEFUL</li><li><span>Cupo</span>Máx. 40</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">El ciclismo y la Educación Física</h5>
+                    <p class="taller-people"><span class="taller-names">Galosi Carlos, Alder Ines, Baudaux Agustin</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <p class="taller-desc">En este taller, los participantes tendrán la oportunidad de vivenciar e intercambiar los principios básicos del ciclismo recreativo y deportivo, conocer los fundamentos de la seguridad vial aplicada a la bicicleta, y reflexionar sobre el valor pedagógico y saludable del ejercicio en bicicleta.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Aula 11</li><li><span>Cupo</span>Máx. 25</li></ul>
+                  </article>
                 </div>
               </details>
             </div>
@@ -437,17 +457,30 @@
               <h4>Diálogos y talleres</h4>
               <p><strong>Diálogos sobre el Panel 2</strong> · Lugar: Aula 1 · Coordinan: Sofía Azzarri e Isabel Huaiquil</p>
               <details class="prog-details">
-                <summary>Talleres <span class="prog-summary-meta">Coordina: María Salazar</span></summary>
-                <div class="prog-table-wrapper">
-                  <table class="prog-table">
-                    <thead><tr><th scope="col">Tallerista/s</th><th scope="col">Pertenencia institucional</th><th scope="col">Taller</th><th scope="col">Lugar</th><th scope="col">Cupo</th></tr></thead>
-                    <tbody>
-                      <tr><td>Malen Gil<br>Schnaidler Rolando</td><td>ESBA Neuquén<br>FACEP - Universidad Nacional del Comahue</td><td>Prácticas artísticas corporales en diálogo: La acción dramática y las prácticas gímnicas</td><td>Hall del Gimnasio</td><td>Máx. 40</td></tr>
-                      <tr><td>Carballo Lourdes<br>Sgrinzi Cinthia<br>Fernández Cesar</td><td>Universidad Nacional del Comahue Bariloche</td><td>Formación y accesibilidad en los deportes de conjunto. Hockey y softbol</td><td>Gimnasio CRUB</td><td>8 a 30</td></tr>
-                      <tr><td>Malen Lozano</td><td></td><td>La Reorganización Postural: el diálogo entre la salud postural y el aprendizaje del movimiento sensible</td><td>Aula 11</td><td>5 a 20</td></tr>
-                      <tr><td>López Eduardo<br>Reising Lilen<br>Danesi Mariana</td><td>Universidad Nacional del Comahue Bariloche</td><td>Escalada indoor en el marco de las clases de Educación Física.</td><td>Gimnasio CRUB</td><td>Máx. 20</td></tr>
-                    </tbody>
-                  </table>
+                <summary>Talleres <span class="prog-summary-meta">4 talleres · Coordina: María Salazar</span></summary>
+                <div class="taller-list">
+                  <article class="taller-card">
+                    <h5 class="taller-title">Prácticas artísticas corporales en diálogo: La acción dramática y las prácticas gímnicas</h5>
+                    <p class="taller-people"><span class="taller-names">Malen Gil, Schnaidler Rolando</span><span class="taller-inst">ESBA Neuquén / FACEP - Universidad Nacional del Comahue</span></p>
+                    <p class="taller-desc">En este taller nos posicionamos en un tipo de prácticas gímnicas (las secuencias rítmicas) y buscamos relaciones vivenciales y conceptuales con la acción corporal expresiva. Queremos que esta propuesta sea una puerta de ingreso a nuevas experiencias y posturas, nuevas estéticas y desplazamientos, habilidades y sensibilidades corporales para pensar nuestra práctica docente.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Hall del Gimnasio</li><li><span>Cupo</span>Máx. 40</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">Formación y accesibilidad en los deportes de conjunto. Hockey y softbol</h5>
+                    <p class="taller-people"><span class="taller-names">Carballo Lourdes, Sgrinzi Cinthia, Fernández Cesar</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>8 a 30</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">La Reorganización Postural: el diálogo entre la salud postural y el aprendizaje del movimiento sensible</h5>
+                    <p class="taller-people"><span class="taller-names">Malen Lozano</span></p>
+                    <p class="taller-desc">El objetivo de este taller es realizar una práctica de “Esferodinamia Reorganización Postural”, técnica de movimiento orientada a superar los acortamientos musculares más frecuentes que limitan la postura y sumar, a través de ejercicios estáticos y dinámicos, la activación del soporte abdominal (Core). En la clase se utilizarán pelotas de 85 cm de diámetro que ofrecen el sostén y son sumamente adaptables para el aumento de la movilidad articular en todos los planos del movimiento.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Aula 11</li><li><span>Cupo</span>5 a 20</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">Escalada indoor en el marco de las clases de Educación Física</h5>
+                    <p class="taller-people"><span class="taller-names">López Eduardo, Reising Lilen, Danesi Mariana</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>Máx. 20</li></ul>
+                  </article>
                 </div>
               </details>
             </div>
@@ -538,16 +571,26 @@
             <div class="prog-body">
               <h4>Talleres</h4>
               <details class="prog-details">
-                <summary>Talleres de la tarde</summary>
-                <div class="prog-table-wrapper">
-                  <table class="prog-table">
-                    <thead><tr><th scope="col">Tallerista/s</th><th scope="col">Pertenencia institucional</th><th scope="col">Taller</th><th scope="col">Lugar</th><th scope="col">Cupo</th></tr></thead>
-                    <tbody>
-                      <tr><td>Massa Daniela Cheb Terrab y María Maureira Enrique</td><td>DeRose Method Bariloche</td><td>Atención, respiración y economía de esfuerzo en el rendimiento humano</td><td>Hall del Gimnasio CRUB</td><td>8 a 20</td></tr>
-                      <tr><td>Salazar María y Simari Pablo</td><td>Universidad Nacional del Comahue Bariloche</td><td>“La cabeza piensa donde los pies juegan”</td><td>Gimnasio CRUB</td><td>20 a 50</td></tr>
-                      <tr><td>Maximiliano Cohen</td><td>Federación Argentina de Netball</td><td>El Netball como variante deportiva para las clases de Educación Física escolar</td><td>Gimnasio CRUB</td><td>Máx. 30 - no excluyente</td></tr>
-                    </tbody>
-                  </table>
+                <summary>Talleres de la tarde <span class="prog-summary-meta">3 talleres</span></summary>
+                <div class="taller-list">
+                  <article class="taller-card">
+                    <h5 class="taller-title">Atención, respiración y economía de esfuerzo en el rendimiento humano</h5>
+                    <p class="taller-people"><span class="taller-names">Massa Daniela Cheb Terrab y María Maureira Enrique</span><span class="taller-inst">DeRose Method Bariloche</span></p>
+                    <p class="taller-desc">Una experiencia práctica para explorar recursos que complementan el entrenamiento físico: atención, respiración y estabilidad frente a la exigencia como factores que pueden hacer una diferencia en el rendimiento.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Hall del Gimnasio CRUB</li><li><span>Cupo</span>8 a 20</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">“La cabeza piensa donde los pies juegan”: el juego como protagonista de las prácticas pedagógicas creativas</h5>
+                    <p class="taller-people"><span class="taller-names">Salazar María y Simari Pablo</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <p class="taller-desc">Pondremos en juego al juego… ¿Y si estamos jugando y no hay juego? ¿Cómo hacemos para que el juego no se transforme en una herramienta que pierde su ludicidad?</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>20 a 50</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">El Netball como variante deportiva para las clases de Educación Física escolar</h5>
+                    <p class="taller-people"><span class="taller-names">Maximiliano Cohen</span><span class="taller-inst">Federación Argentina de Netball</span></p>
+                    <p class="taller-desc">Netball como deporte emergente para las clases de Educación Física. El netball es un deporte de conjunto que posee reglas sumamente enriquecedoras y positivas para incluir en las clases de Educación Física y potenciar los contenidos en los colegios.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>Máx. 30 - no excluyente</li></ul>
+                  </article>
                 </div>
               </details>
             </div>
@@ -617,16 +660,26 @@
               </details>
 
               <details class="prog-details">
-                <summary>Talleres <span class="prog-summary-meta">Coordina: María Salazar</span></summary>
-                <div class="prog-table-wrapper">
-                  <table class="prog-table">
-                    <thead><tr><th scope="col">Tallerista/s</th><th scope="col">Pertenencia institucional</th><th scope="col">Taller</th><th scope="col">Lugar</th><th scope="col">Cupo</th></tr></thead>
-                    <tbody>
-                      <tr><td>Caveri Camila<br>Re Melina<br>Peña Mariana</td><td>Universidad Nacional del Comahue Bariloche</td><td>La Educación Ambiental en la Escuela</td><td>Gimnasio CRUB</td><td>20 a 50</td></tr>
-                      <tr><td>Arribere Santiago</td><td>Asociación Barilochense de Bádminton</td><td>El Bádminton como Deporte Escolar</td><td>Gimnasio CRUB</td><td>Máx. 50</td></tr>
-                      <tr><td>Maximiliano Berrondo</td><td>Universidad Provincial de Córdoba</td><td>Prácticas luctatorias y su enseñanza en la Educación Física Escolar: aproximación conceptual y propuesta práctica desde un modelo comprensivo centrado en el juego</td><td>Hall del Gimnasio</td><td>Máx. 40</td></tr>
-                    </tbody>
-                  </table>
+                <summary>Talleres <span class="prog-summary-meta">3 talleres · Coordina: María Salazar</span></summary>
+                <div class="taller-list">
+                  <article class="taller-card">
+                    <h5 class="taller-title">La Educación Ambiental en la Escuela</h5>
+                    <p class="taller-people"><span class="taller-names">Caveri Camila, Re Melina, Peña Mariana</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+                    <p class="taller-desc">En este taller abordaremos temáticas relacionadas con la educación ambiental, conceptos de ambiente y su relación con la Ley de Educación Ambiental Integral. De manera lúdica experimentaremos actividades que nos permiten abordar y trabajar sobre estos contenidos. Cerraremos con un trabajo compartido generando propuestas lúdicas que puedan ser aplicadas en nuestro trabajo en el patio de las escuelas, al aire libre, tanto para la educación formal como no formal.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>20 a 50</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">El Bádminton como Deporte Escolar</h5>
+                    <p class="taller-people"><span class="taller-names">Arribere Santiago</span><span class="taller-inst">Asociación Barilochense de Bádminton</span></p>
+                    <p class="taller-desc">Técnicas de iniciación para la enseñanza del bádminton en la escuela. Un deporte inclusivo, adaptable a diferentes entornos y fácil de aprender.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>Máx. 50</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">Prácticas luctatorias y su enseñanza en la Educación Física Escolar: aproximación conceptual y propuesta práctica desde un modelo comprensivo centrado en el juego</h5>
+                    <p class="taller-people"><span class="taller-names">Maximiliano Berrondo</span><span class="taller-inst">Universidad Provincial de Córdoba</span></p>
+                    <p class="taller-desc">Las prácticas de lucha y deportes de combate representan un contenido poco tematizado en las propuestas de enseñanza de la Educación Física escolar. Por tanto, la propuesta de taller pretende ofrecer un acercamiento sobre el tema y movilizar respecto a su estudio y abordaje.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Hall del Gimnasio</li><li><span>Cupo</span>Máx. 40</li></ul>
+                  </article>
                 </div>
               </details>
             </div>
@@ -672,16 +725,26 @@
               <h4>Diálogos y talleres</h4>
               <p><strong>Diálogos sobre el Panel 3</strong> · Lugar: Aula 6 · Coordina: Fabián Martins</p>
               <details class="prog-details">
-                <summary>Talleres <span class="prog-summary-meta">Coordina: María Salazar</span></summary>
-                <div class="prog-table-wrapper">
-                  <table class="prog-table">
-                    <thead><tr><th scope="col">Tallerista/s</th><th scope="col">Pertenencia institucional</th><th scope="col">Taller</th><th scope="col">Lugar</th><th scope="col">Cupo</th></tr></thead>
-                    <tbody>
-                      <tr><td>Sgrinzi Cinthia<br>Hernández Antu</td><td>Subsecretaría de deportes Bariloche</td><td>Newcom ¿El deporte de las personas mayores?</td><td>Gimnasio CRUB</td><td>Máx. 30</td></tr>
-                      <tr><td>Bugallo Daniel<br>Canario Matias</td><td>IS Palomar de Casero<br>IES N°816</td><td>Proyecto interdisciplinario de la vida en la naturaleza hacia un camino de transformación sustentable social y natural</td><td>Hall Gimnasio</td><td>Máx. 30</td></tr>
-                      <tr><td>Jorge Gómez</td><td>UFLO</td><td>Prácticas corporales constitutivas de la conciencia del/ de la Otro/a</td><td>Gimnasio CRUB</td><td>12 a 60</td></tr>
-                    </tbody>
-                  </table>
+                <summary>Talleres <span class="prog-summary-meta">3 talleres · Coordina: María Salazar</span></summary>
+                <div class="taller-list">
+                  <article class="taller-card">
+                    <h5 class="taller-title">Newcom ¿El deporte de las personas mayores?</h5>
+                    <p class="taller-people"><span class="taller-names">Sgrinzi Cinthia, Hernández Antu</span><span class="taller-inst">Subsecretaría de deportes Bariloche</span></p>
+                    <p class="taller-desc">Newcom es un deporte en pleno desarrollo y expansión entre los adultos mayores. Una disciplina que necesita de nuestros conocimientos para promoverla adecuadamente.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>Máx. 30</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">Proyecto interdisciplinario de la vida en la naturaleza hacia un camino de transformación sustentable social y natural</h5>
+                    <p class="taller-people"><span class="taller-names">Bugallo Daniel, Canario Matias</span><span class="taller-inst">IS Palomar de Casero / IES N°816</span></p>
+                    <p class="taller-desc">Nuestra expectativa en la realización de este taller es que juntos podamos conocer, analizar y valorizar el accionar del “Proyecto interdisciplinario de Vida en la Naturaleza”, en busca de transformaciones sustentables y continuas en los contextos sociales y naturales, con el fin de mejorar la calidad de vida en, por y para el ambiente.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Hall Gimnasio</li><li><span>Cupo</span>Máx. 30</li></ul>
+                  </article>
+                  <article class="taller-card">
+                    <h5 class="taller-title">Prácticas corporales constitutivas de la conciencia del/ de la Otro/a</h5>
+                    <p class="taller-people"><span class="taller-names">Jorge Gómez</span><span class="taller-inst">UFLO</span></p>
+                    <p class="taller-desc">Toma de conciencia del/de la Otro/a en prácticas corporales compartidas.</p>
+                    <ul class="taller-facts"><li><span>Lugar</span>Gimnasio CRUB</li><li><span>Cupo</span>12 a 60</li></ul>
+                  </article>
                 </div>
               </details>
             </div>
