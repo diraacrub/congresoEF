@@ -352,6 +352,178 @@ ul {
   text-decoration: line-through;
 }
 
+/* ── PROGRAMA ────────────────────────────────────────────────────── */
+.prog-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.prog-day-link {
+  background: #14375a;
+  color: #fff;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.prog-day-link:hover {
+  background: #1f5f8b;
+  text-decoration: none;
+}
+
+.prog-day {
+  margin-bottom: 2.5rem;
+  scroll-margin-top: 4.5rem;
+}
+
+.tab-panel .prog-day-title {
+  font-size: 1.35rem;
+  border-bottom: 3px solid #f0b429;
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.prog-item {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1.25rem;
+  background: #fff;
+  border-radius: 10px;
+  border-left: 4px solid #cdd8e1;
+  padding: 1.1rem 1.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 0.85rem;
+}
+
+.prog-panel { border-left-color: #f0b429; }
+.prog-mesa  { border-left-color: #1f5f8b; }
+.prog-taller { border-left-color: #1a7a40; }
+.prog-acto  { border-left-color: #14375a; }
+
+.prog-pausa {
+  background: #f7f9fc;
+  box-shadow: none;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.prog-time {
+  font-weight: 700;
+  color: #14375a;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.prog-body h4 {
+  color: #14375a;
+  font-size: 1rem;
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+}
+
+.prog-pausa .prog-body h4 {
+  color: #4a5568;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.prog-body p {
+  color: #4a5568;
+  font-size: 0.93rem;
+  margin-bottom: 0.3rem;
+}
+
+.prog-body .prog-meta {
+  margin-bottom: 0.1rem;
+}
+
+.prog-tag {
+  display: inline-block;
+  background: #fefbe9;
+  color: #8a6100;
+  border: 1px solid #f0b429;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.prog-details {
+  border: 1px solid #e1e8ee;
+  border-radius: 8px;
+  margin: 0.6rem 0;
+  background: #fbfcfd;
+}
+
+.prog-details summary {
+  cursor: pointer;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: #14375a;
+  line-height: 1.45;
+}
+
+.prog-details summary:hover {
+  background: #eef4f9;
+  border-radius: 8px;
+}
+
+.prog-details[open] summary {
+  border-bottom: 1px solid #e1e8ee;
+}
+
+.prog-summary-meta {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #657080;
+}
+
+.prog-table-wrapper {
+  overflow-x: auto;
+}
+
+.prog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  background: #fff;
+}
+
+.prog-table th {
+  background: #eef4f9;
+  color: #14375a;
+  text-align: left;
+  font-weight: 600;
+  padding: 0.55rem 0.75rem;
+}
+
+.prog-table td {
+  padding: 0.55rem 0.75rem;
+  border-top: 1px solid #eef0f2;
+  vertical-align: top;
+  color: #2c3e50;
+}
+
+.prog-list {
+  margin: 0;
+  padding: 0.75rem 1rem 0.75rem 2.2rem;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+.prog-list li {
+  margin-bottom: 0.4rem;
+}
+
 /* ── INSCRIPCIONES: table ────────────────────────────────────────── */
 .table-wrapper {
   overflow-x: auto;
@@ -590,6 +762,16 @@ ul {
   .tab-btn {
     padding: 0.75rem 0.9rem;
     font-size: 0.8rem;
+  }
+
+  .prog-item {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+    padding: 1rem;
+  }
+
+  .prog-table {
+    min-width: 560px;
   }
 }
 

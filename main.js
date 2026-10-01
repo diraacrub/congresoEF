@@ -28,9 +28,12 @@
     });
   });
 
-  // Restore tab from URL hash on load
+  // Restore tab from URL hash on load (also for anchors inside a tab)
   var hash = window.location.hash.replace('#', '');
-  if (hash && document.getElementById(hash)) {
-    activateTab(hash);
+  var target = hash && document.getElementById(hash);
+  var panel = target && target.closest('.tab-panel');
+  if (panel) {
+    activateTab(panel.id);
+    if (panel !== target) target.scrollIntoView();
   }
 })();
