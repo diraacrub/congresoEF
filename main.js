@@ -28,16 +28,53 @@
     });
   });
 
-  // Programa: expandir / contraer todos los detalles
-  var toggleAll = document.querySelector('.prog-toggle-all');
-  if (toggleAll) {
-    var progDetails = document.querySelectorAll('#programa .prog-details');
-    toggleAll.addEventListener('click', function () {
-      var open = toggleAll.getAttribute('aria-pressed') !== 'true';
-      progDetails.forEach(function (d) { d.open = open; });
-      toggleAll.setAttribute('aria-pressed', open ? 'true' : 'false');
-      toggleAll.textContent = open ? 'Contraer todo el detalle' : 'Expandir todo el detalle';
+  // Programa: detalle de talleres, mesas, libros y pósteres en ventana emergente
+  var dialog = document.getElementById('prog-dialog');
+  if (dialog && dialog.showModal) {
+    var dlgTitle  = dialog.querySelector('.prog-dialog-title');
+    var dlgPeople = dialog.querySelector('.prog-dialog-people');
+    var dlgFacts  = dialog.querySelector('.prog-dialog-facts');
+    var dlgBody   = dialog.querySelector('.prog-dialog-body');
+
+    document.querySelectorAll('.prog-more').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('li');
+        var isTaller = item.classList.contains('taller');
+        dlgTitle.textContent = item.querySelector('h5').textContent;
+        dlgFacts.innerHTML = '';
+        dlgBody.innerHTML  = '';
+
+        if (isTaller) {
+          dlgPeople.innerHTML = item.querySelector('.taller-people').innerHTML;
+          item.querySelectorAll('.taller-fact').forEach(function (f) {
+            dlgFacts.appendChild(f.cloneNode(true));
+          });
+          dlgBody.textContent = item.querySelector('.taller-desc').textContent;
+        } else {
+          dlgPeople.textContent = item.querySelector('.prog-sub-meta span').textContent;
+          dlgBody.innerHTML = item.querySelector('.prog-sub-detail').innerHTML;
+        }
+
+        dialog.classList.toggle('is-wide', !isTaller);
+        dialog.showModal();
+      });
     });
+
+    dialog.querySelector('.prog-dialog-close').addEventListener('click', function () {
+      dialog.close();
+    });
+    // Cerrar al hacer clic fuera del contenido
+    dialog.addEventListener('click', function (e) {
+      if (e.target !== dialog) return;
+      var r = dialog.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right &&
+                   e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside) dialog.close();
+    });
+  } else {
+    // Sin soporte de <dialog>: mostrar el detalle en línea
+    document.querySelectorAll('.taller-desc, .prog-sub-detail').forEach(function (d) { d.hidden = false; });
+    document.querySelectorAll('.prog-more').forEach(function (b) { b.hidden = true; });
   }
 
   // Restore tab from URL hash on load (also for anchors inside a tab)

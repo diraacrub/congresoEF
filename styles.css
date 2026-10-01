@@ -455,38 +455,6 @@ ul {
   margin-bottom: 0.35rem;
 }
 
-.prog-details {
-  border: 1px solid #e1e8ee;
-  border-radius: 8px;
-  margin: 0.6rem 0;
-  background: #fbfcfd;
-}
-
-.prog-details summary {
-  cursor: pointer;
-  padding: 0.6rem 0.9rem;
-  font-weight: 600;
-  font-size: 0.93rem;
-  color: #14375a;
-  line-height: 1.45;
-}
-
-.prog-details summary:hover {
-  background: #eef4f9;
-  border-radius: 8px;
-}
-
-.prog-details[open] summary {
-  border-bottom: 1px solid #e1e8ee;
-}
-
-.prog-summary-meta {
-  display: block;
-  font-weight: 400;
-  font-size: 0.85rem;
-  color: #657080;
-}
-
 .prog-table-wrapper {
   overflow-x: auto;
 }
@@ -513,26 +481,34 @@ ul {
   color: #2c3e50;
 }
 
-/* Talleres: tarjetas con descripción */
+/* Talleres: datos siempre visibles, descripción en ventana emergente */
+.prog-body .taller-group {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a7a40;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .taller-list {
-  display: grid;
-  gap: 0.75rem;
-  padding: 0.85rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 0.4rem;
+  border-top: 1px solid #e1e8ee;
 }
 
-.taller-card {
-  background: #fff;
-  border: 1px solid #e1e8ee;
+.taller {
+  padding: 0.75rem 0 0.75rem 0.9rem;
+  border-bottom: 1px solid #e1e8ee;
   border-left: 3px solid #1a7a40;
-  border-radius: 8px;
-  padding: 0.9rem 1.1rem;
 }
 
-.taller-card .taller-title {
+.taller-title {
   color: #14375a;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.4;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.15rem;
 }
 
 .prog-body .taller-people {
@@ -540,7 +516,7 @@ ul {
   flex-wrap: wrap;
   column-gap: 0.5rem;
   font-size: 0.86rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .taller-names {
@@ -557,51 +533,176 @@ ul {
   margin-right: 0.5rem;
 }
 
-.prog-body .taller-desc {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #3d4a5c;
-  margin-bottom: 0.6rem;
-}
-
-.taller-facts {
+/* Mesas, libros y pósteres: datos visibles, detalle en ventana emergente */
+.prog-sublist {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  border-top: 1px solid #e1e8ee;
 }
 
-.taller-facts li {
+.prog-sub {
+  padding: 0.7rem 0 0.7rem 0.9rem;
+  border-bottom: 1px solid #e1e8ee;
+  border-left: 3px solid #1f5f8b;
+}
+
+.prog-sub-title {
+  color: #14375a;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+}
+
+.prog-body .prog-sub-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  color: #657080;
+  margin-bottom: 0;
+}
+
+.prog-sub .prog-more {
+  border-color: #1f5f8b;
+  color: #1f5f8b;
+}
+
+.prog-sub .prog-more:hover,
+.prog-sub .prog-more:focus-visible {
+  background: #1f5f8b;
+  color: #fff;
+}
+
+.prog-body .taller-facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.taller-fact {
   background: #eef6f1;
   color: #1a5c33;
   border-radius: 999px;
   padding: 0.1rem 0.7rem;
 }
 
-.taller-facts li span {
-  font-weight: 700;
-  margin-right: 0.35rem;
-}
-
-.prog-toggle-all {
+.prog-more {
   margin-left: auto;
-  background: #fff;
-  color: #14375a;
-  border: 1px solid #14375a;
-  padding: 0.45rem 1.1rem;
+  background: none;
+  border: 1px solid #1a7a40;
+  color: #1a7a40;
   border-radius: 999px;
+  padding: 0.15rem 0.8rem;
   font: inherit;
-  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
-.prog-toggle-all:hover {
-  background: #14375a;
+.prog-more:hover,
+.prog-more:focus-visible {
+  background: #1a7a40;
   color: #fff;
+}
+
+.prog-dialog {
+  width: min(36rem, calc(100% - 2rem));
+  margin: auto;
+  border: none;
+  border-top: 4px solid #1a7a40;
+  border-radius: 10px;
+  padding: 1.5rem 1.6rem 1.4rem;
+  color: #2c3e50;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.prog-dialog.is-wide {
+  width: min(56rem, calc(100% - 2rem));
+  border-top-color: #1f5f8b;
+}
+
+.prog-dialog-people:empty,
+.prog-dialog-facts:empty {
+  display: none;
+}
+
+.prog-dialog::backdrop {
+  background: rgba(20, 55, 90, 0.45);
+}
+
+.prog-dialog-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #657080;
+  cursor: pointer;
+}
+
+.prog-dialog-close:focus {
+  outline: none;
+}
+
+.prog-dialog-close:focus-visible {
+  outline: 2px solid #1a7a40;
+  border-radius: 4px;
+}
+
+.prog-dialog-close:hover {
+  color: #14375a;
+}
+
+.prog-dialog-title {
+  color: #14375a;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  padding-right: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.prog-dialog-people {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+  font-size: 0.88rem;
+  margin-bottom: 0.6rem;
+}
+
+.prog-dialog-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.prog-dialog-body {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.prog-dialog-body .prog-table-wrapper {
+  max-height: 65vh;
+  overflow: auto;
+  border: 1px solid #e1e8ee;
+  border-radius: 8px;
+}
+
+.prog-dialog-body .prog-table th {
+  position: sticky;
+  top: 0;
+}
+
+.prog-dialog-body .prog-list {
+  padding: 0 0 0 1.2rem;
 }
 
 .prog-list {
@@ -863,14 +964,6 @@ ul {
 
   .prog-table {
     min-width: 560px;
-  }
-
-  .taller-list {
-    padding: 0.6rem;
-  }
-
-  .prog-toggle-all {
-    margin-left: 0;
   }
 }
 
