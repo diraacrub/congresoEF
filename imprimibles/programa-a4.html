@@ -1,0 +1,600 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Programa completo – A4</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --azul: #14375a; --azul2: #1f5f8b; --tinta: #1d2b38; --gris: #5d6d7e;
+        --panel: #1f5f8b; --mesa: #0e7c7b; --taller: #3f8f3a; --acto: #b9770e; --pausa: #95a5a6; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Source Sans 3', 'DejaVu Sans', sans-serif; color: var(--tinta); background: #fff; }
+
+.cab { display: flex; align-items: center; gap: 5mm; border-bottom: 0.6mm solid var(--azul); padding-bottom: 3mm; }
+.cab img.logo { height: 16mm; }
+.cab .t { flex: 1; }
+.cab .t b { display: block; font-size: 12.5pt; line-height: 1.2; color: var(--azul); }
+.cab .t span { font-size: 9pt; color: var(--gris); }
+.cab .qr { text-align: center; font-size: 6.5pt; line-height: 1.15; color: var(--gris); }
+.cab .qr img { display: block; width: 18mm; height: 18mm; margin: 0 auto 1mm; }
+
+.prog-day-title { margin: 4mm 0 2mm; padding: 1.6mm 4mm; background: var(--azul); color: #fff;
+                  font-size: 15pt; font-weight: 800; border-radius: 1.5mm; }
+.prog-item { position: relative; padding: 2mm 0 2mm 25mm; border-bottom: 0.2mm solid #dfe4e8; }
+.prog-item .prog-time { position: absolute; left: 0; top: 2mm; width: 22mm; }
+.prog-time { font-weight: 800; color: var(--azul); font-size: 10.5pt; line-height: 1.25; }
+.prog-body { border-left: 1.2mm solid #c5d0da; padding-left: 3mm; font-size: 9.5pt; line-height: 1.32; }
+.prog-panel .prog-body { border-color: var(--panel); }
+.prog-mesa .prog-body  { border-color: var(--mesa); }
+.prog-taller .prog-body { border-color: var(--taller); }
+.prog-acto .prog-body  { border-color: var(--acto); }
+.prog-pausa .prog-body { border-color: var(--pausa); color: var(--gris); }
+.prog-body h4, .prog-tag { break-after: avoid; }
+.prog-body h4 { font-size: 11pt; line-height: 1.25; font-weight: 700; margin-bottom: .6mm; }
+.prog-pausa h4 { font-weight: 600; }
+.prog-tag { display: inline-block; background: var(--panel); color: #fff; font-size: 7.5pt; font-weight: 700;
+            text-transform: uppercase; letter-spacing: .05em; padding: .2mm 1.6mm; border-radius: 1mm; margin-bottom: .6mm; }
+.prog-body p { margin-top: .4mm; }
+.prog-meta strong { color: var(--gris); font-weight: 600; }
+.taller-group { margin-top: 1.5mm !important; font-weight: 700; color: var(--taller); }
+ul { list-style: none; }
+.prog-sublist, .taller-list { margin-top: 1mm; }
+.prog-sub, .taller { padding: 1.2mm 0 1.2mm; border-top: 0.2mm dotted #c9d1d8; }
+.prog-sub-title, .taller-title { font-size: 10pt; line-height: 1.25; font-weight: 700; }
+.prog-sub-meta, .taller-people, .taller-facts { font-size: 8.8pt; color: var(--gris); }
+.prog-sub-meta span { font-weight: 600; color: var(--mesa); }
+.taller-names { color: var(--tinta); }
+.taller-inst::before { content: " · "; }
+.taller-fact + .taller-fact::before { content: " · "; }
+.taller-fact b { font-weight: 600; }
+.taller-desc { display: none; }
+.prog-table { width: 100%; border-collapse: collapse; margin-top: 1mm; font-size: 8.3pt; line-height: 1.25; }
+.prog-table th { text-align: left; font-weight: 700; color: var(--gris); border-bottom: 0.3mm solid #9fb0bf; padding: .4mm 1.2mm; }
+.prog-table td { vertical-align: top; padding: .7mm 1.2mm; border-bottom: 0.15mm solid #e3e7eb; }
+.prog-table td:first-child { width: 28%; }
+.prog-table td:nth-child(2) { width: 22%; color: var(--gris); }
+.prog-table td:last-child { font-weight: 600; }
+.prog-table tr { break-inside: avoid; }
+.prog-list li { padding: .5mm 0 .5mm 3mm; text-indent: -3mm; font-size: 8.8pt; }
+.prog-list li::before { content: "• "; color: var(--gris); }
+.prog-list em { font-style: normal; font-weight: 600; }
+
+    @page { size: A4 portrait; margin: 11mm 12mm 11mm; }
+    .dia + .dia { break-before: page; }
+    .prog-item { break-inside: avoid; }
+    .prog-item:has(.prog-sublist), .prog-item:has(.taller-list) { break-inside: auto; }
+    .prog-sub, .taller, .taller-group { break-inside: avoid; }
+    .taller-group { break-after: avoid; }
+    .prog-sub-title { break-after: avoid; }
+    </style></head><body><section class="dia"><div class="cab"><img class="logo" src="../static/Logo%20educacion%20fisica.jpg" alt="">
+      <div class="t"><b>VII Congreso Patagónico, IV Nacional y I Internacional de Educación Física y Formación Docente</b><span>8, 9 y 10 de octubre de 2026 · Centro Regional Universitario Bariloche · Quintral 1250 · Programa completo</span></div>
+      <div class="qr"><img src="qr-programa.svg" alt="">Programa<br>online</div></div><div class="prog-day" id="prog-jueves">
+<h3 class="prog-day-title">Jueves 8 de octubre</h3>
+<div class="prog-item">
+<div class="prog-time">8:30 a 9:30</div>
+<div class="prog-body">
+<h4>Acreditación e inscripción</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Hall central edificio Quintral 1250</p>
+</div>
+</div>
+<div class="prog-item prog-acto">
+<div class="prog-time">10:00</div>
+<div class="prog-body">
+<h4>Acto de apertura</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna edificio central</p>
+<p>A cargo de autoridades del Centro Regional Universitario Bariloche, docentes y estudiantes del Profesorado de Educación Física.</p>
+</div>
+</div>
+<div class="prog-item prog-panel">
+<div class="prog-time">10:30 a 12:30</div>
+<div class="prog-body">
+<span class="prog-tag">Panel 1</span>
+<h4>“Habitar el territorio desde la Educación Física: prácticas, tensiones y desafíos en la construcción de territorialidades.”</h4>
+<p class="prog-meta"><strong>Panelistas:</strong> Gustavo Cayún Pichunlef, Sebastian Fuentes, Jorgelina Mazzuco</p>
+<p class="prog-meta"><strong>Coordinan:</strong> Laura Mendez y Leonardo Daniel Mársico</p>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna edificio central</p>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">12:30 a 13:30</div>
+<div class="prog-body">
+<h4>Pausa con intervención del grupo “¿Bailamos?” a cargo de V. Cutillo e intervención artística del grupo Cre-Arte a cargo de V. Crespi</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Hall central</p>
+</div>
+</div>
+<div class="prog-item">
+<div class="prog-time">13:30 a 15:30</div>
+<div class="prog-body">
+<h4>Diálogos y talleres</h4>
+<p><strong>Diálogos sobre el Panel 1</strong> · Lugar: Aula 1 · Coordina: Daniela Carrasco</p>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Proyecto interdisciplinario de la vida en la naturaleza hacia un camino de transformación sustentable social y natural</h5>
+<p class="taller-people"><span class="taller-names">Bugallo Daniel, Canario Matias</span><span class="taller-inst">IS Palomar de Casero / IES N°816</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 30</span> </p>
+<p class="taller-desc">Nuestra expectativa en la realización de este taller es que juntos podamos conocer, analizar y valorizar el accionar del “Proyecto interdisciplinario de Vida en la Naturaleza”, en busca de transformaciones sustentables y continuas en los contextos sociales y naturales, con el fin de mejorar la calidad de vida en, por y para el ambiente.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">El Ultimate Frisbee como deporte alternativo e inclusivo: implicancias en el juego mixto y autoarbitrado</h5>
+<p class="taller-people"><span class="taller-names">Rivarola Lucila, Sustersic Juan Pablo, Silva Marina</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 30</span> </p>
+<p class="taller-desc">Ultimate Frisbee, un deporte mixto, sin contacto y autoarbitrado, basado en el respeto, la cooperación y el diálogo. A través de la práctica y la reflexión pedagógica, exploraremos sus posibilidades como herramienta educativa e inclusiva en Educación Física.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">Parkour como contenido curricular en las clases de Educación Física</h5>
+<p class="taller-people"><span class="taller-names">Pérez Donato, Bracco Luca</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 10</span></p>
+</li>
+<li class="taller">
+<h5 class="taller-title">La enseñanza de las prácticas atléticas en la escuela. ¿Qué enseña la Educación Física?</h5>
+<p class="taller-people"><span class="taller-names">Pizzorno Federico, Magrini Luciano</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio ADEFUL</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+<p class="taller-desc">Un lugar para encontrarnos a reflexionar sobre la enseñanza de las prácticas atléticas en Educación Física escolar. Perspectivas, dimensiones y efectos corporales.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">El ciclismo y la Educación Física</h5>
+<p class="taller-people"><span class="taller-names">Galosi Carlos, Alder Ines, Baudaux Agustin</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Aula 11</span><span class="taller-fact"><b>Cupo</b> Máx. 25</span> </p>
+<p class="taller-desc">En este taller, los participantes tendrán la oportunidad de vivenciar e intercambiar los principios básicos del ciclismo recreativo y deportivo, conocer los fundamentos de la seguridad vial aplicada a la bicicleta, y reflexionar sobre el valor pedagógico y saludable del ejercicio en bicicleta.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">16:00 a 16:30</div>
+<div class="prog-body"><h4>Pausa</h4></div>
+</div>
+<div class="prog-item prog-mesa">
+<div class="prog-time">16:30 a 18:30</div>
+<div class="prog-body">
+<h4>Mesas de ponencias</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 1 “Prácticas deportivas y gímnicas en Educación Física”</h5>
+<p class="prog-sub-meta"><span>Aula Magna · Coordina: Cinthia Sgrinzi</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Alex Patricio Ojeda Aravena</td><td>Universidad de Los Lagos</td><td>Análisis de la evidencia sobre los efectos de programas de actividad física basados en artes marciales y deportes de combate en el bienestar físico, mental y socioemocional de escolares.</td></tr>
+<tr><td>Alsina, Diego</td><td>ISEF, Udelar</td><td>Espacio de formación integral. Clases de luchas.</td></tr>
+<tr><td>Pizzorno, Federico Andrés</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Las prácticas homogeneizantes en el diseño curricular ESRN. Formación ciudadana en la enseñanza de los deportes.</td></tr>
+<tr><td>Cárdenas, Juan Román; Comba, Cecilia; Fiorillo, Marcos</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Nuevos desafíos en la formación de formadores: inclusión de estudiantes no videntes en el profesorado de educación física del Centro Regional Universitario Bariloche</td></tr>
+<tr><td>Pérez, Donato Tomas; Bracco, Luca Francisco</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Parkour como contenido curricular en las clases de Educación Física</td></tr>
+<tr><td>Fabián Martins</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Saberes docentes y prácticas de enseñanza de los deportes: una aproximación desde las nociones de cuerpo.</td></tr>
+<tr><td>Copolechio Morand, Marina; Bumisky, Julián</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Enseñanza de los deportes y las prácticas deportivas en escuelas secundarias orientadas en educación física</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 3 “La Educación Física en prácticas lúdico recreativas y deportivas en el entorno natural y urbano”</h5>
+<p class="prog-sub-meta"><span>Aula 6 · Coordinan: Leonardo Daniel Mársico y Lucas Mondino Lukacs</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Alfaro Parot, Guillermina; Campano, Marcela</td><td>Universidad del Este - Universidad Nacional de La Plata</td><td>Cuerpo y enseñanza en la navegación</td></tr>
+<tr><td>Barreto, Daniel</td><td>Universidad Nacional de Luján</td><td>¿Para qué hacemos campamentos? Construcción de subjetividades y ciudadanía ambiental…</td></tr>
+<tr><td>Loncopan, Rocío; Muccio María Francina; Galíndez Marina</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Las salidas educativas al entorno natural en clave de Educación Física.</td></tr>
+<tr><td>Palacio, Mónica; Hertling, Alina</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Actividades en el entorno natural en la Formación Docente de Chile, Brasil y Argentina</td></tr>
+<tr><td>Machin, Aldana; Zabaleta, María; Fígoli, Andrés</td><td>CURE (Centro Universitario Regional Este). ISEF Udelar Uruguay</td><td>Trayectorias Integrales “Inter-acciones en las cuencas de Costa de Oro. Actividades en la naturaleza, educación ambiental y diálogo de saberes en ecosistemas relevantes”</td></tr>
+<tr><td>Galosi, Carlos Javier; Alder, Ines</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Enseñar sobre ruedas: el ciclismo de montaña en la formación docente de profesores de Educación Física.</td></tr>
+<tr><td>Reising Lilen, Danesi Mariana y López Eduardo</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Experiencias de articulación que posibilitan escalar</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 4 “Educación Física desde una dimensión histórica, política y sociocultural”</h5>
+<p class="prog-sub-meta"><span>Aula 11 · Coordinan: Claudia Kraft y Guillermo Quiña</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Cucci, Emiliana; Dupuy, Manuel y Riccetti, Ana</td><td>Universidad de Flores</td><td>Reflexiones acerca de las prácticas profesionales como territorios de construcción y disputa de visiones sobre la Educación Física en la formación docente inicial</td></tr>
+<tr><td>Mertian Amundarain, Lucas Vicente</td><td>Universidad Nacional de Río Negro</td><td>La evaluación en la formación del profesorado de Educación Física</td></tr>
+<tr><td>Oroño Lugano, Marcela</td><td>Universidad de la República</td><td>La consigna didáctica como dispositivo de transformación pública: un estudio de la formación inicial desde el CURE-ISEF-MALDONADO</td></tr>
+<tr><td>Peña Troncoso, Sebastián Enrique</td><td>Universidad Austral de Chile</td><td>Obstáculos y posibilidades en la implementación de los estándares de la profesión docente en las carreras de Educación Física en Chile</td></tr>
+<tr><td>Bennasar García, Miguel Israel</td><td>Instituto Superior de Formación Docente Salomé Ureña</td><td>Metodologías activas para el desarrollo de la comprensión lectora y las competencias pedagógicas en estudiantes de Educación Física, ISFODOSU RLNNM</td></tr>
+<tr><td>Carriquiriborde, Nicolás</td><td>Universidad Nacional de La Plata</td><td>Ampliar, incluir y enseñar: interpelaciones al trabajo de enseñar de profesores/as de Educación en un programa socioeducativo.</td></tr>
+<tr><td>López Medero, Norma</td><td>Universidad Nacional del Comahue</td><td>Cultura digital y alfabetización académica en el ingreso al Profesorado en Educación Física: tensiones entre prácticas culturales y cultura académica</td></tr>
+<tr><td>Pastorino Barcia, Martina</td><td>Universidad de la República - Instituto Superior de Educación Física</td><td>El cuerpo del alto rendimiento: reflexiones desde las teorías feministas y los estudios sociales sobre el deporte</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 5 “Educación Física, bienestar y salud”</h5>
+<p class="prog-sub-meta"><span>Sala de Haro · Coordinan: Santiago De Giovanni y Karina Cutrera</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Albornoz, María Victoria</td><td>Universidad Nacional de San Martín</td><td>Yoga en las clases Educación Física en niños/as de Nivel Inicial</td></tr>
+<tr><td>Oviedo Sandro Nereo</td><td>Universidad Nacional de Río Cuarto</td><td>Estudio de la Marcha en Personas Mayores</td></tr>
+<tr><td>Oviedo Sandro Nereo</td><td>Universidad Nacional de Río Cuarto</td><td>Evidencias sobre intervenciones para mejorar o mantener la capacidad intrínseca en personas mayores</td></tr>
+<tr><td>Valenzuela, Deolinda Vanesa; Vela, María Lorena; Dupuy, Héctor Manuel</td><td>Universidad Nacional del Comahue y Universidad de Flores. Universidad Complutense de Madrid. Universidad de Flores e IDIHCS (UNLP y CONICET)</td><td>Detección del comportamiento sedentario, riesgo de caídas y fragilidad en los adultos mayores de 60 años del Balneario de Cofrentes, Valencia.</td></tr>
+<tr><td>Zacharías, Daniela; Betancurt, Romina; Cutrera, Karina</td><td>Universidad Nacional del Comahue</td><td>Prevalencia de factores de riesgo de enfermedades no transmisibles en estudiantes del profesorado de Educación Física en la Universidad Nacional del Comahue - Bariloche</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item">
+<div class="prog-time">18:30 a 19:30</div>
+<div class="prog-body">
+<h4>Presentación de libros y revistas · Exposición de pósteres digitales · Encuentros de cátedras</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Presentación de libros y revistas</h5>
+<p class="prog-sub-meta"><span>Aula Magna · Coordina: Karina Cutrera</span></p>
+<div class="prog-sub-detail">
+<ul class="prog-list">
+<li>Karavaitis, Leila Giselle. FEF IPEF-UPC. <em>Vida en la naturaleza en la Educación Física. Huellas históricas, prácticas docentes y políticas educativas.</em></li>
+<li>Baeza, Fabian. Supervisión de Educación Física Distrito VI Neuquén. <em>Senderismo Escolar.</em></li>
+<li>Fernández, Marisa y López, Eduardo. Universidad Nacional del Comahue CRUB. <em>Revista Educación Física Experiencias e Investigaciones.</em></li>
+<li>Ramirez, Paula. Universidad Nacional del Comahue CRUB. <em>Una didáctica intercultural en la formación de docentes universitarios. Condiciones de posibilidad en Furilofche warria, Wallmapu.</em></li>
+<li>Roson Dorado, María Rosario. UNLu. <em>Cualquiera. Desafíos y oportunidades en accesibilidad educativa. Una mirada desde la Educación Física escolar.</em></li>
+</ul>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Presentación de libros y revistas</h5>
+<p class="prog-sub-meta"><span>Sala De Haro · Coordina: Leonardo Daniel Mársico</span></p>
+<div class="prog-sub-detail">
+<ul class="prog-list">
+<li>Pepe, Silvia Alejandra. GNA. <em>El fútbol femenino.</em></li>
+<li>Franceschini, Silvina Clara. UNLaM-USI. <em>La Educación Física y los discursos de la eugenesia.</em></li>
+<li>Di Domizio, Débora - Emiliozzi, María Valeria y Gandini, María Agustina. Universidad Nacional de La Plata. <em>Revista Educación Física y Ciencia: aportes de un proyecto editorial para la construcción y circulación del conocimiento en el campo disciplinar.</em></li>
+<li>Kopelovich, Pablo. CONICET y Universidad Nacional de La Plata. <em>Educación física, escuela secundaria y género. Los discursos médicos en la construcción de la diferencia sexual en la Universidad Nacional de La Plata (1929-1946).</em></li>
+<li>De Giovanni, Santiago. Universidad Nacional del Comahue CRUB. <em>Seguridad y Prevención de Riesgos en las actividades educativas.</em></li>
+<li>Mercado, Luciano Hernando. Universidad Católica de Salta. Municipalidad de Córdoba. <em>Bitácora Intempestiva: Recreación hacia un Buen Vivir.</em></li>
+<li>Bennasar García, Miguel Israel. Instituto Superior de Formación Docente Salomé Ureña, República Dominicana. <em>Niveles y motivos de práctica de actividad física en la comunidad estudiantil del ISFODOSU.</em></li>
+</ul>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Exposición de pósteres digitales</h5>
+<p class="prog-sub-meta"><span>Aula 6 · Coordina: Fabián Martins</span></p>
+<div class="prog-sub-detail">
+<ul class="prog-list">
+<li>Galosi, Carlos; Alder, Inés; Fernández, Marisa. Universidad Nacional del Comahue (CRUB). <em>Enseñanza del senderismo. Principios que estructuran las prácticas pedagógicas.</em></li>
+<li>Vilariño Tomas, Gilardoni Leonardo. Universidad Nacional del Comahue (CRUB). <em>Diseño y construcción de un muro de escalada para la formación docente en el CRUB-UNCo: una necesidad pedagógica con impacto comunitario.</em></li>
+<li>López Medero, Norma Beatriz. Universidad Nacional del Comahue (CRUB). <em>Del uso instrumental al diálogo crítico: la inteligencia artificial como copiloto pedagógico en la formación docente.</em></li>
+</ul>
+</div>
+</li>
+</ul>
+<p><strong>Encuentro de cátedras de Vida en la Naturaleza / Prácticas en la Naturaleza</strong> · Lugar: Aula 12 · Coordina: María Salazar</p>
+<p><strong>Encuentro de cátedras de Prácticas de la Enseñanza</strong> · Lugar: Aula 11 · Coordina: Federico Pizzorno</p>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">19:30 a 20:00</div>
+<div class="prog-body">
+<h4>Intervención artística: Dojo Kobayashi Do</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Hall central</p>
+</div>
+</div>
+</div></section><section class="dia"><div class="cab"><img class="logo" src="../static/Logo%20educacion%20fisica.jpg" alt="">
+      <div class="t"><b>VII Congreso Patagónico, IV Nacional y I Internacional de Educación Física y Formación Docente</b><span>8, 9 y 10 de octubre de 2026 · Centro Regional Universitario Bariloche · Quintral 1250 · Programa completo</span></div>
+      <div class="qr"><img src="qr-programa.svg" alt="">Programa<br>online</div></div><div class="prog-day" id="prog-viernes">
+<h3 class="prog-day-title">Viernes 9 de octubre</h3>
+<div class="prog-item prog-panel">
+<div class="prog-time">9:00 a 11:00</div>
+<div class="prog-body">
+<span class="prog-tag">Panel 2</span>
+<h4>“Accesibilidad y Educación Física en Clave de Derechos: desafíos, configuraciones de apoyo y trayectorias inclusivas.”</h4>
+<p class="prog-meta"><strong>Panelistas:</strong> Leroy Mendoza, Christopher Espada, Malena Farías</p>
+<p class="prog-meta"><strong>Coordina:</strong> Silvia Zanabria</p>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna</p>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">11:00 a 11:15</div>
+<div class="prog-body"><h4>Pausa</h4></div>
+</div>
+<div class="prog-item">
+<div class="prog-time">11:15 a 13:15</div>
+<div class="prog-body">
+<h4>Diálogos y talleres</h4>
+<p><strong>Diálogos sobre el Panel 2</strong> · Lugar: Aula 1 · Coordinan: Sofía Azzarri e Isabel Huaiquil</p>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Prácticas artísticas corporales en diálogo: La acción dramática y las prácticas gímnicas</h5>
+<p class="taller-people"><span class="taller-names">Malen Gil, Schnaidler Rolando</span><span class="taller-inst">ESBA Neuquén / FACEP - Universidad Nacional del Comahue</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+<p class="taller-desc">En este taller nos posicionamos en un tipo de prácticas gímnicas (las secuencias rítmicas) y buscamos relaciones vivenciales y conceptuales con la acción corporal expresiva. Queremos que esta propuesta sea una puerta de ingreso a nuevas experiencias y posturas, nuevas estéticas y desplazamientos, habilidades y sensibilidades corporales para pensar nuestra práctica docente.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">Formación y accesibilidad en los deportes de conjunto. Hockey y softbol</h5>
+<p class="taller-people"><span class="taller-names">Carballo Lourdes, Sgrinzi Cinthia, Fernández Cesar</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 8 a 30</span></p>
+</li>
+<li class="taller">
+<h5 class="taller-title">La Reorganización Postural: el diálogo entre la salud postural y el aprendizaje del movimiento sensible</h5>
+<p class="taller-people"><span class="taller-names">Malen Lozano</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Aula 11</span><span class="taller-fact"><b>Cupo</b> 5 a 20</span> </p>
+<p class="taller-desc">El objetivo de este taller es realizar una práctica de “Esferodinamia Reorganización Postural”, técnica de movimiento orientada a superar los acortamientos musculares más frecuentes que limitan la postura y sumar, a través de ejercicios estáticos y dinámicos, la activación del soporte abdominal (Core). En la clase se utilizarán pelotas de 85 cm de diámetro que ofrecen el sostén y son sumamente adaptables para el aumento de la movilidad articular en todos los planos del movimiento.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">Escalada indoor en el marco de las clases de Educación Física</h5>
+<p class="taller-people"><span class="taller-names">López Eduardo, Reising Lilen, Danesi Mariana</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 20</span></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">13:15 a 14:00</div>
+<div class="prog-body">
+<h4>Pausa con intervención artística: prácticas de movimiento consciente a cargo de Camilu y DeRose Method. Performer Kike Maureira</h4>
+</div>
+</div>
+<div class="prog-item prog-mesa">
+<div class="prog-time">14:00 a 16:00</div>
+<div class="prog-body">
+<h4>Mesas de ponencias</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 2 “Educación Física en clave de derechos: géneros, accesibilidad e interculturalidad”</h5>
+<p class="prog-sub-meta"><span>Aula Magna · Coordina: Sofía Azzarri</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Carter-Thuillier, Bastian; Gallardo-Fuentes, Francisco; Del Río-Soto, Cyntia</td><td>Universidad de Los Lagos, Chile</td><td>Formación Docente, Migración y Políticas Públicas: El Caso de la Educación Física en la Macrozona Sur de Chile</td></tr>
+<tr><td>Roson Dorado, María del Rosario</td><td>FLACSO, Argentina</td><td>La situación escolar de las personas con discapacidad en las escuelas de nivel primario de Argentina: desafíos e interrogantes sobre accesibilidad y derechos, en la educación física escolar</td></tr>
+<tr><td>Henríquez-Alvear, Luis Osvaldo; Rivera-Gutiérrez, Catalina</td><td>CIAM - Universidad de La Frontera, Chile</td><td>Migración, interculturalidad y género en el proceso de práctica profesional del profesorado en Educación Física</td></tr>
+<tr><td>Himm Alejandra Alicia; López Lautaro Manuel; Roberto Panica</td><td>Universidad Nacional de La Plata, Argentina; Universidad del Este, Argentina</td><td>La Ley Micaela en la didáctica de la Educación Física: revisión crítica de producciones teóricas e investigaciones recientes.</td></tr>
+<tr><td>Carolina Martínez-Angulo (1); Bastian Carter-Thuillier (1); Teresa Fuentes-Nieto (2); Víctor López-Pastor (2); Magela Costa-Ferrari (3); Yael Soto (4)</td><td>(1) Universidad de Los Lagos, Chile; (2) Universidad de Valladolid, España; (3) Universidad de la República, Uruguay; (4) Universidad Nacional de Tucumán, Argentina</td><td>Autoeficacia del futuro profesorado de Educación Física para la inclusión de estudiantes con discapacidad en Argentina, Chile y Uruguay.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 3 “La Educación Física en prácticas lúdico recreativas y deportivas en el entorno natural y urbano”</h5>
+<p class="prog-sub-meta"><span>Aula 1 · Coordina: Mónica Palacio</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Harán, Luciana; López, Eduardo; Hertling, Alina</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Seguridad en escalada: decisiones de escaladores/as respecto a la gestión de la seguridad individual en prácticas educativas y recreativas de escalada en roca.</td></tr>
+<tr><td>Harán, Luciana; López, Eduardo Hugo; Julián, Raúl Horacio</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Gestión de Riesgo en Terreno Nevado: Equipamiento y Medidas de Seguridad.</td></tr>
+<tr><td>López, Álvaro; Rodríguez, Patricia; Abraira, Manuel</td><td>UDELAR - CURE - ISEF - Uruguay</td><td>Proyecto Meraki. Diálogos entre educación y naturaleza.</td></tr>
+<tr><td>Danesi Mariana, López Eduardo, Reising María Lilen</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Experiencias de formación que nutren al futuro rol profesional en actividades de escalada.</td></tr>
+<tr><td>González, Javier Ernesto</td><td>Departamento de Educación Física CPEM N°72 Neuquén</td><td>CaTroCa: Prácticas corporales urbanas, participación comunitaria e inclusión desde la Educación Física Integral</td></tr>
+<tr><td>Mercado, Luciano</td><td>Municipalidad de Córdoba. UCASAL</td><td>No sabemos lo que puede un Viejo. Recreación del Sur hacia un Buen Vivir en y con Personas Mayores</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 4 “Educación Física desde una dimensión histórica, política y sociocultural”</h5>
+<p class="prog-sub-meta"><span>Aula 11 · Coordinan: Marina Copolechio y Daniela Carrasco</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Monkobodzky, Sergio; Baioni, Gabriela y Colella, Agustín</td><td>Universidad Nacional de Luján</td><td>Los procesos de reflexión sobre las experiencias autobiográficas vividas por lxs estudiantes del Profesorado de Educación Física en la educación secundaria y sus aportes a las prácticas preprofesionales. El caso del PUEF, UNLu.</td></tr>
+<tr><td>Rodríguez Aguirre, Alejandra</td><td>Universidad de la República</td><td>Pedagogía liminal del acompañamiento: Habitar fronteras en la Formación Docente</td></tr>
+<tr><td>Vera, Tiago Felipe</td><td>Universidad de Los Lagos</td><td>Competencias para la formación ciudadana en el prácticum de Educación Física: Percepciones divergentes sobre su desarrollo profesional en la Formación Inicial Docente Universitaria</td></tr>
+<tr><td>Pérez de Arce-Yáñez, Matías; González-Gaéz, Yohana y Carter-Belrán, Juan</td><td>Universidad de Los Lagos</td><td>El Vínculo Reflexivo como posibilitador de gestión en equipos de investigación en deporte y sociedad.</td></tr>
+<tr><td>Amuchastegui, Griselda</td><td>Universidad Nacional de Córdoba</td><td>Las propuestas de enseñanza de Educación Física ¿Cómo se construye...</td></tr>
+<tr><td>Campano, Marcela</td><td>Universidad del Este y Universidad Nacional de La Plata</td><td>Formación docente, currículo y especificidad disciplinar: el caso de las Escuelas Secundarias Orientadas en Educación Física</td></tr>
+<tr><td>Baioni, Gabriela</td><td>Universidad Nacional de José Clemente Paz</td><td>Las prácticas profesionales en la Educación no formal de los estudiantes del PUEF.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 5 “Educación Física, bienestar y salud” junto a Mesa 2 – Eje 6 “Entrenamiento y rendimiento en la Educación Física”</h5>
+<p class="prog-sub-meta"><span>Sala de Haro · Coordina: Karina Cutrera</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Ramos, Martín</td><td>Universidad Nacional del Comahue Bariloche</td><td>Hipertrofia muscular: Fundamentos científicos para la prescripción del entrenamiento</td></tr>
+<tr><td>Araujo, Carlos Javier; Perales, Monica Vanesa</td><td>Instituto de Formación Docente Catriel</td><td>Alfabetización corporal motriz y Educación Física integral: el movimiento como derecho y herramienta de salud</td></tr>
+<tr><td>Guillermo Laclote</td><td>Universidad de Los Lagos</td><td>¿Cómo evaluamos la coordinación motriz en la escuela? Relato de la experiencia de implementación de los test 3JS y KTK en Educación Física.</td></tr>
+<tr><td>Gandini María Agustina</td><td>Universidad Nacional de La Plata</td><td>¿Qué significa estar sano? Hallazgos preliminares y nuevos interrogantes sobre la salud en la escuela primaria</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-taller">
+<div class="prog-time">14:30 a 16:30</div>
+<div class="prog-body">
+<h4>Talleres</h4>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Atención, respiración y economía de esfuerzo en el rendimiento humano</h5>
+<p class="taller-people"><span class="taller-names">Massa Daniela Cheb Terrab y María Maureira Enrique</span><span class="taller-inst">DeRose Method Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 8 a 20</span> </p>
+<p class="taller-desc">Una experiencia práctica para explorar recursos que complementan el entrenamiento físico: atención, respiración y estabilidad frente a la exigencia como factores que pueden hacer una diferencia en el rendimiento.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">“La cabeza piensa donde los pies juegan”: el juego como protagonista de las prácticas pedagógicas creativas</h5>
+<p class="taller-people"><span class="taller-names">Salazar María y Simari Pablo</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 20 a 50</span> </p>
+<p class="taller-desc">Pondremos en juego al juego… ¿Y si estamos jugando y no hay juego? ¿Cómo hacemos para que el juego no se transforme en una herramienta que pierde su ludicidad?</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">El Netball como variante deportiva para las clases de Educación Física escolar</h5>
+<p class="taller-people"><span class="taller-names">Maximiliano Cohen</span><span class="taller-inst">Federación Argentina de Netball</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 30 - no excluyente</span> </p>
+<p class="taller-desc">Netball como deporte emergente para las clases de Educación Física. El netball es un deporte de conjunto que posee reglas sumamente enriquecedoras y positivas para incluir en las clases de Educación Física y potenciar los contenidos en los colegios.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">16:30 a 17:00</div>
+<div class="prog-body"><h4>Pausa</h4></div>
+</div>
+<div class="prog-item prog-mesa">
+<div class="prog-time">17:00 a 19:00</div>
+<div class="prog-body">
+<h4>Mesas de ponencias y talleres</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 2 “Educación Física en clave de derechos: géneros, accesibilidad e interculturalidad”</h5>
+<p class="prog-sub-meta"><span>Sala de Haro · Coordinan: Daniela Carrasco y Silvia Zanabria</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Mele, Ayelén Magalí</td><td>Facultad de Humanidades y Ciencias de la Educación – UNLP</td><td>Educación Física escolar y la participación estudiantil. Un análisis desde la perspectiva de géneros</td></tr>
+<tr><td>Diperna, Toia</td><td>FaHCE UNLP</td><td>Prácticas deportivas escolares en clave de derechos</td></tr>
+<tr><td>Ramírez, Paula J.; Kraft, Claudia R.; Langbehn, Cora</td><td>Universidad Nacional del Comahue - CRUB</td><td>Interculturalidad en la Educación Superior. Anotaciones acerca de la intervención del logo de la Universidad Nacional del Comahue en la sede Furilofche como un “tercer texto”.</td></tr>
+<tr><td>Sánchez, Leonel Aníbal; Salerno, Juan Ramón; Miranda, Florencia</td><td>ISFD N°2</td><td>Iniciación al Esquí Alpino, una mirada educativa en contexto</td></tr>
+<tr><td>Zanabria, Silvia Lorena; Carrasco, Daniela Vanesa</td><td>CRUB - Universidad Nacional del Comahue / IFDC Bariloche</td><td>Derechos, responsabilidades y gestión de profes de educación física</td></tr>
+<tr><td>Juan Luís Carter</td><td>Universidad de Los Lagos</td><td>Valores asociados a la práctica físico-deportiva durante la infancia y la adolescencia: un estudio multicaso con alumnado inmigrante y chileno.</td></tr>
+<tr><td>Fernández Herrero, Matías y Fuentes, Sebastián Oscar</td><td>Fundación San José Obrero</td><td>“La Montaña Desde La Ventana” y la disputa por el territorio simbólico en Bariloche</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 3 – Eje 3 “La Educación Física en prácticas lúdico recreativas y deportivas en el entorno natural y urbano”</h5>
+<p class="prog-sub-meta"><span>Aula 11 · Coordina: Mónica Palacio</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Marsico, Leonardo Daniel</td><td>Universidad Nacional del Comahue (CRUB) – CONICET</td><td>Prácticas en ambientes naturales relacionadas con la educación física de la escuela primaria de la provincia de Río Negro. Descripción y primeras aproximaciones a su análisis</td></tr>
+<tr><td>Mondino Lukacs, Lucas Ulises (1); Marsico, Leonardo Daniel (2)</td><td>(1) Universidad Nacional del Comahue (CRUB); (2) Universidad Nacional del Comahue (CRUB) – CONICET</td><td>Primeras conclusiones de las trayectorias de escaladores competidores juveniles en San Carlos de Bariloche 2026</td></tr>
+<tr><td>Bondel, Gabriel; Joos, Christianne; Galosi, Carlos</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Desafíos en la enseñanza del trekking a personas ciegas en el contexto de la formación docente</td></tr>
+<tr><td>Mendia, Martin</td><td>FCH-UNICEN / Instituto de Educación Superior Tandil</td><td>La victoria del Agón. El juego en el sistema educativo obligatorio.</td></tr>
+<tr><td>Pizzorno, Federico Andrés</td><td>Universidad Nacional del Comahue (CRUB)</td><td>Búsqueda del tesoro: La enseñanza del jugar en Educación Física.</td></tr>
+<tr><td>Arellano Julia (1), Danielle María Laura (2), Karavaitis, Leila Giselle (3)</td><td>(1 y 2) IPEM 360; (3) Facultad de Educación Física IPEF UPC</td><td>“Sembrando territorio: cuando la educación se entrama con el bosque”</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 3 – Eje 4 “Educación Física desde una dimensión histórica, política y sociocultural”</h5>
+<p class="prog-sub-meta"><span>Aula 1 · Coordinan: Mariano Chiappe, Gustavo Cayún Pichunlef, José María Vallina</span></p>
+<div class="prog-sub-detail">
+<div class="prog-table-wrapper">
+<table class="prog-table">
+<thead><tr><th scope="col">Autor/a (s)</th><th scope="col">Pertenencia institucional</th><th scope="col">Título del trabajo</th></tr></thead>
+<tbody>
+<tr><td>Salvo Piccinino, Javier</td><td>Universidad de la República - Instituto Superior de Educación Física</td><td>“La recreación como derecho en Uruguay: formas de reconocimiento normativo entre 1948 y 2020”</td></tr>
+<tr><td>Scharagrodsky, Pablo Ariel</td><td>Universidad Nacional de Quilmes</td><td>“Imaginarios infantiles sobre la Cultura Física. El caso de Caras y Caretas, Argentina primeras décadas del siglo XX”</td></tr>
+<tr><td>Rivera Gutiérrez, Catalina Andrea y Henriquez Alvear, Luis Osvaldo</td><td>Centro de Investigación en Alfabetización Motriz, Universidad de La Frontera</td><td>“Formación del profesorado de Educación Física en Chile, revisión histórica desde la masculinidad durante la primera mitad del siglo XX”</td></tr>
+<tr><td>Maiori, Marcos</td><td>Universidad Nacional de La Plata</td><td>Las políticas deportivas en la región, el caso del Fútbol</td></tr>
+<tr><td>Gómez, Jorge Roberto</td><td>Universidad de Flores</td><td>Prácticas corporales y Otredad</td></tr>
+<tr><td>Carbajal, María Laura (1) y Scharagrodsky, Pablo Ariel (2)</td><td>Universidad Nacional de Quilmes y CONICET</td><td>De la gimnasia al tónico: cultura física, tecnociencia alimentaria y representaciones corporales en la publicidad de Caras y Caretas (1898–1939)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</li>
+</ul>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">La Educación Ambiental en la Escuela</h5>
+<p class="taller-people"><span class="taller-names">Caveri Camila, Re Melina, Peña Mariana</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 20 a 50</span> </p>
+<p class="taller-desc">En este taller abordaremos temáticas relacionadas con la educación ambiental, conceptos de ambiente y su relación con la Ley de Educación Ambiental Integral. De manera lúdica experimentaremos actividades que nos permiten abordar y trabajar sobre estos contenidos. Cerraremos con un trabajo compartido generando propuestas lúdicas que puedan ser aplicadas en nuestro trabajo en el patio de las escuelas, al aire libre, tanto para la educación formal como no formal.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">El Bádminton como Deporte Escolar</h5>
+<p class="taller-people"><span class="taller-names">Arribere Santiago</span><span class="taller-inst">Asociación Barilochense de Bádminton</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 50</span> </p>
+<p class="taller-desc">Técnicas de iniciación para la enseñanza del bádminton en la escuela. Un deporte inclusivo, adaptable a diferentes entornos y fácil de aprender.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">Prácticas luctatorias y su enseñanza en la Educación Física Escolar: aproximación conceptual y propuesta práctica desde un modelo comprensivo centrado en el juego</h5>
+<p class="taller-people"><span class="taller-names">Maximiliano Berrondo</span><span class="taller-inst">Universidad Provincial de Córdoba</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+<p class="taller-desc">Las prácticas de lucha y deportes de combate representan un contenido poco tematizado en las propuestas de enseñanza de la Educación Física escolar. Por tanto, la propuesta de taller pretende ofrecer un acercamiento sobre el tema y movilizar respecto a su estudio y abordaje.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-acto">
+<div class="prog-time">19:45</div>
+<div class="prog-body">
+<h4>Acto homenaje a las trayectorias docentes en la formación del Profesorado de Educación Física del CRUB + Encuentro cultural abierto a todxs los participantes del congreso</h4>
+<p>Intervención cultural y momento de encuentro festivo: artistas invitados Hugo González (Jazmín de Luna), Compañía de danza municipal La Llave y Grupo Capoeira Oriaxé Bariloche.</p>
+<p class="prog-meta"><strong>Lugar:</strong> Gimnasio CRUB</p>
+<p class="prog-meta"><strong>Coordina:</strong> César Fernández</p>
+</div>
+</div>
+</div></section><section class="dia"><div class="cab"><img class="logo" src="../static/Logo%20educacion%20fisica.jpg" alt="">
+      <div class="t"><b>VII Congreso Patagónico, IV Nacional y I Internacional de Educación Física y Formación Docente</b><span>8, 9 y 10 de octubre de 2026 · Centro Regional Universitario Bariloche · Quintral 1250 · Programa completo</span></div>
+      <div class="qr"><img src="qr-programa.svg" alt="">Programa<br>online</div></div><div class="prog-day" id="prog-sabado">
+<h3 class="prog-day-title">Sábado 10 de octubre</h3>
+<div class="prog-item prog-panel">
+<div class="prog-time">9:00 a 11:00</div>
+<div class="prog-body">
+<span class="prog-tag">Panel 3</span>
+<h4>“Desafíos actuales en Educación Física: transformaciones, tensiones y reconfiguraciones de sus campos de intervención.”</h4>
+<p>Introducción con la proyección del video danza <em>Kalul</em>, de Sol Semisa y Ana Nieto (7 minutos).</p>
+<p class="prog-meta"><strong>Panelistas:</strong> Pablo Scharagrodsky; Sandro Rivas Pichicura; Marina Copolechio</p>
+<p class="prog-meta"><strong>Coordina:</strong> Fabián Martins</p>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna</p>
+</div>
+</div>
+<div class="prog-item">
+<div class="prog-time">11:30 a 13:30</div>
+<div class="prog-body">
+<h4>Diálogos y talleres</h4>
+<p><strong>Diálogos sobre el Panel 3</strong> · Lugar: Aula 6 · Coordina: Fabián Martins</p>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Newcom ¿El deporte de las personas mayores?</h5>
+<p class="taller-people"><span class="taller-names">Sgrinzi Cinthia, Hernández Antu</span><span class="taller-inst">Subsecretaría de deportes Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 30</span> </p>
+<p class="taller-desc">Newcom es un deporte en pleno desarrollo y expansión entre los adultos mayores. Una disciplina que necesita de nuestros conocimientos para promoverla adecuadamente.</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">“Bitácora intempestiva”. Una poética del AYNI (Recreación comunitaria)</h5>
+<p class="taller-people"><span class="taller-names">Luciano Mercado</span><span class="taller-inst">Universidad Católica de Salta</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+<p class="taller-desc">Una propuesta para transitar desde la Recreación un viaje al encuentro desde la metáfora puesta en juego. Jugando nos vamos a cuestionar sobre ¿Cómo construir espacios de esperanza, dignidad y transformación social desde una Educación Física Crítica y sensible?</p>
+</li>
+<li class="taller">
+<h5 class="taller-title">Prácticas corporales constitutivas de la conciencia del/ de la Otro/a</h5>
+<p class="taller-people"><span class="taller-names">Jorge Gómez</span><span class="taller-inst">UFLO</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 12 a 60</span> </p>
+<p class="taller-desc">Toma de conciencia del/de la Otro/a en prácticas corporales compartidas.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-acto">
+<div class="prog-time">13:30 a 14:30</div>
+<div class="prog-body">
+<h4>Acto de clausura con intervención artística</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna</p>
+</div>
+</div>
+</div></section></body></html>

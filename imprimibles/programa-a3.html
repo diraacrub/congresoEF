@@ -1,0 +1,453 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Programa general – A3</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --azul: #14375a; --azul2: #1f5f8b; --tinta: #1d2b38; --gris: #5d6d7e;
+        --panel: #1f5f8b; --mesa: #0e7c7b; --taller: #3f8f3a; --acto: #b9770e; --pausa: #95a5a6; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Source Sans 3', 'DejaVu Sans', sans-serif; color: var(--tinta); background: #fff; }
+
+.cab { display: flex; align-items: center; gap: 5mm; border-bottom: 0.6mm solid var(--azul); padding-bottom: 3mm; }
+.cab img.logo { height: 16mm; }
+.cab .t { flex: 1; }
+.cab .t b { display: block; font-size: 12.5pt; line-height: 1.2; color: var(--azul); }
+.cab .t span { font-size: 9pt; color: var(--gris); }
+.cab .qr { text-align: center; font-size: 6.5pt; line-height: 1.15; color: var(--gris); }
+.cab .qr img { display: block; width: 18mm; height: 18mm; margin: 0 auto 1mm; }
+
+.prog-day-title { margin: 4mm 0 2mm; padding: 1.6mm 4mm; background: var(--azul); color: #fff;
+                  font-size: 15pt; font-weight: 800; border-radius: 1.5mm; }
+.prog-item { position: relative; padding: 2mm 0 2mm 25mm; border-bottom: 0.2mm solid #dfe4e8; }
+.prog-item .prog-time { position: absolute; left: 0; top: 2mm; width: 22mm; }
+.prog-time { font-weight: 800; color: var(--azul); font-size: 10.5pt; line-height: 1.25; }
+.prog-body { border-left: 1.2mm solid #c5d0da; padding-left: 3mm; font-size: 9.5pt; line-height: 1.32; }
+.prog-panel .prog-body { border-color: var(--panel); }
+.prog-mesa .prog-body  { border-color: var(--mesa); }
+.prog-taller .prog-body { border-color: var(--taller); }
+.prog-acto .prog-body  { border-color: var(--acto); }
+.prog-pausa .prog-body { border-color: var(--pausa); color: var(--gris); }
+.prog-body h4, .prog-tag { break-after: avoid; }
+.prog-body h4 { font-size: 11pt; line-height: 1.25; font-weight: 700; margin-bottom: .6mm; }
+.prog-pausa h4 { font-weight: 600; }
+.prog-tag { display: inline-block; background: var(--panel); color: #fff; font-size: 7.5pt; font-weight: 700;
+            text-transform: uppercase; letter-spacing: .05em; padding: .2mm 1.6mm; border-radius: 1mm; margin-bottom: .6mm; }
+.prog-body p { margin-top: .4mm; }
+.prog-meta strong { color: var(--gris); font-weight: 600; }
+.taller-group { margin-top: 1.5mm !important; font-weight: 700; color: var(--taller); }
+ul { list-style: none; }
+.prog-sublist, .taller-list { margin-top: 1mm; }
+.prog-sub, .taller { padding: 1.2mm 0 1.2mm; border-top: 0.2mm dotted #c9d1d8; }
+.prog-sub-title, .taller-title { font-size: 10pt; line-height: 1.25; font-weight: 700; }
+.prog-sub-meta, .taller-people, .taller-facts { font-size: 8.8pt; color: var(--gris); }
+.prog-sub-meta span { font-weight: 600; color: var(--mesa); }
+.taller-names { color: var(--tinta); }
+.taller-inst::before { content: " · "; }
+.taller-fact + .taller-fact::before { content: " · "; }
+.taller-fact b { font-weight: 600; }
+.taller-desc { display: none; }
+.prog-table { width: 100%; border-collapse: collapse; margin-top: 1mm; font-size: 8.3pt; line-height: 1.25; }
+.prog-table th { text-align: left; font-weight: 700; color: var(--gris); border-bottom: 0.3mm solid #9fb0bf; padding: .4mm 1.2mm; }
+.prog-table td { vertical-align: top; padding: .7mm 1.2mm; border-bottom: 0.15mm solid #e3e7eb; }
+.prog-table td:first-child { width: 28%; }
+.prog-table td:nth-child(2) { width: 22%; color: var(--gris); }
+.prog-table td:last-child { font-weight: 600; }
+.prog-table tr { break-inside: avoid; }
+.prog-list li { padding: .5mm 0 .5mm 3mm; text-indent: -3mm; font-size: 8.8pt; }
+.prog-list li::before { content: "• "; color: var(--gris); }
+.prog-list em { font-style: normal; font-weight: 600; }
+
+    @page { size: A3 portrait; margin: 0; }
+    .hoja { width: 297mm; height: 420mm; display: flex; flex-direction: column; overflow: hidden; }
+    header { background: linear-gradient(135deg, var(--azul) 0%, var(--azul2) 100%); color: #fff;
+             display: flex; align-items: center; gap: 7mm; padding: 9mm 12mm; }
+    header .logo { height: 30mm; background: #fff; border-radius: 2mm; padding: 1.5mm; }
+    header .t { flex: 1; }
+    header .org { font-size: 10pt; opacity: .9; }
+    header h1 { font-size: 21pt; line-height: 1.15; font-weight: 800; margin: 1.5mm 0; }
+    header .lema { font-size: 12pt; font-style: italic; opacity: .92; }
+    header .dat { margin-top: 2mm; font-size: 12.5pt; font-weight: 700; }
+    header .qr { background: #fff; color: var(--tinta); border-radius: 2mm; padding: 2.5mm; text-align: center; font-size: 8pt; line-height: 1.2; }
+    header .qr img { display: block; width: 30mm; height: 30mm; margin-bottom: 1.2mm; }
+    .titulo { padding: 4mm 12mm 0; display: flex; align-items: baseline; justify-content: space-between; }
+    .titulo h2 { font-size: 20pt; font-weight: 800; color: var(--azul); }
+    .ref { font-size: 9pt; color: var(--gris); display: flex; gap: 4mm; }
+    .ref i { display: inline-block; width: 3mm; height: 3mm; border-radius: .6mm; margin-right: 1mm; vertical-align: -.3mm; }
+    .cols { flex: 1; min-height: 0; columns: 4; column-gap: 6mm; column-fill: auto; column-rule: 0.2mm solid #dfe4e8; padding: 1mm 12mm 0; }
+    .prog-day-title { font-size: 13pt; text-align: center; margin: 2mm 0 1mm; break-after: avoid; }
+    .prog-day:first-child .prog-day-title { margin-top: 1mm; }
+    .prog-item { padding: 1.2mm 0; break-inside: avoid; }
+    .prog-item:has(.prog-sublist), .prog-item:has(.taller-list) { break-inside: auto; }
+    .prog-item .prog-time { position: static; width: auto; margin-bottom: .4mm; }
+    .prog-sub, .taller { break-inside: avoid; }
+    .prog-time { font-size: 10pt; }
+    .prog-body { font-size: 8.6pt; padding-left: 2.2mm; }
+    .prog-body h4 { font-size: 9.6pt; }
+    .prog-sub, .taller { padding: .8mm 0; }
+    .prog-sub-title, .taller-title { font-size: 8.8pt; }
+    .prog-sub-meta, .taller-people, .taller-facts { font-size: 8pt; }
+    .taller-inst { display: none; }
+    footer { padding: 3mm 12mm 7mm; font-size: 9pt; color: var(--gris); text-align: center; }
+    </style></head><body>
+    <div class="hoja">
+      <header>
+        <img class="logo" src="../static/Logo%20educacion%20fisica.jpg" alt="">
+        <div class="t">
+          <p class="org">Universidad Nacional del Comahue · Centro Regional Universitario Bariloche</p>
+          <h1>VII Congreso Patagónico, IV Nacional y I Internacional de Educación Física y Formación Docente</h1>
+          <p class="lema">Desafíos e interrogantes de prácticas y saberes en movimiento</p>
+          <p class="dat">8, 9 y 10 de octubre de 2026 · Centro Regional Universitario Bariloche · Quintral 1250</p>
+        </div>
+        <div class="qr"><img src="qr-programa.svg" alt="">Ponencias y detalle<br>de cada actividad</div>
+      </header>
+      <div class="titulo"><h2>Programa general</h2><div class="ref"><span><i style="background:var(--panel)"></i>Paneles</span><span><i style="background:var(--mesa)"></i>Mesas de ponencias</span><span><i style="background:var(--taller)"></i>Talleres</span><span><i style="background:var(--acto)"></i>Actos</span><span><i style="background:var(--pausa)"></i>Pausas</span></div></div>
+      <div class="cols"><div class="prog-day" id="prog-jueves">
+<h3 class="prog-day-title">Jueves 8 de octubre</h3>
+<div class="prog-item">
+<div class="prog-time">8:30 a 9:30</div>
+<div class="prog-body">
+<h4>Acreditación e inscripción</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Hall central edificio Quintral 1250</p>
+</div>
+</div>
+<div class="prog-item prog-acto">
+<div class="prog-time">10:00</div>
+<div class="prog-body">
+<h4>Acto de apertura</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna edificio central</p>
+<p>A cargo de autoridades del Centro Regional Universitario Bariloche, docentes y estudiantes del Profesorado de Educación Física.</p>
+</div>
+</div>
+<div class="prog-item prog-panel">
+<div class="prog-time">10:30 a 12:30</div>
+<div class="prog-body">
+<span class="prog-tag">Panel 1</span>
+<h4>“Habitar el territorio desde la Educación Física: prácticas, tensiones y desafíos en la construcción de territorialidades.”</h4>
+<p class="prog-meta"><strong>Panelistas:</strong> Gustavo Cayún Pichunlef, Sebastian Fuentes, Jorgelina Mazzuco</p>
+<p class="prog-meta"><strong>Coordinan:</strong> Laura Mendez y Leonardo Daniel Mársico</p>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna edificio central</p>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">12:30 a 13:30</div>
+<div class="prog-body">
+<h4>Pausa con intervención del grupo “¿Bailamos?” a cargo de V. Cutillo e intervención artística del grupo Cre-Arte a cargo de V. Crespi</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Hall central</p>
+</div>
+</div>
+<div class="prog-item">
+<div class="prog-time">13:30 a 15:30</div>
+<div class="prog-body">
+<h4>Diálogos y talleres</h4>
+<p><strong>Diálogos sobre el Panel 1</strong> · Lugar: Aula 1 · Coordina: Daniela Carrasco</p>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Proyecto interdisciplinario de la vida en la naturaleza hacia un camino de transformación sustentable social y natural</h5>
+<p class="taller-people"><span class="taller-names">Bugallo Daniel, Canario Matias</span><span class="taller-inst">IS Palomar de Casero / IES N°816</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 30</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">El Ultimate Frisbee como deporte alternativo e inclusivo: implicancias en el juego mixto y autoarbitrado</h5>
+<p class="taller-people"><span class="taller-names">Rivarola Lucila, Sustersic Juan Pablo, Silva Marina</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 30</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">Parkour como contenido curricular en las clases de Educación Física</h5>
+<p class="taller-people"><span class="taller-names">Pérez Donato, Bracco Luca</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 10</span></p>
+</li>
+<li class="taller">
+<h5 class="taller-title">La enseñanza de las prácticas atléticas en la escuela. ¿Qué enseña la Educación Física?</h5>
+<p class="taller-people"><span class="taller-names">Pizzorno Federico, Magrini Luciano</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio ADEFUL</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">El ciclismo y la Educación Física</h5>
+<p class="taller-people"><span class="taller-names">Galosi Carlos, Alder Ines, Baudaux Agustin</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Aula 11</span><span class="taller-fact"><b>Cupo</b> Máx. 25</span> </p>
+
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">16:00 a 16:30</div>
+<div class="prog-body"><h4>Pausa</h4></div>
+</div>
+<div class="prog-item prog-mesa">
+<div class="prog-time">16:30 a 18:30</div>
+<div class="prog-body">
+<h4>Mesas de ponencias</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 1 “Prácticas deportivas y gímnicas en Educación Física”</h5>
+<p class="prog-sub-meta"><span>Aula Magna · Coordina: Cinthia Sgrinzi</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 3 “La Educación Física en prácticas lúdico recreativas y deportivas en el entorno natural y urbano”</h5>
+<p class="prog-sub-meta"><span>Aula 6 · Coordinan: Leonardo Daniel Mársico y Lucas Mondino Lukacs</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 4 “Educación Física desde una dimensión histórica, política y sociocultural”</h5>
+<p class="prog-sub-meta"><span>Aula 11 · Coordinan: Claudia Kraft y Guillermo Quiña</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 5 “Educación Física, bienestar y salud”</h5>
+<p class="prog-sub-meta"><span>Sala de Haro · Coordinan: Santiago De Giovanni y Karina Cutrera</span></p>
+
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item">
+<div class="prog-time">18:30 a 19:30</div>
+<div class="prog-body">
+<h4>Presentación de libros y revistas · Exposición de pósteres digitales · Encuentros de cátedras</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Presentación de libros y revistas</h5>
+<p class="prog-sub-meta"><span>Aula Magna · Coordina: Karina Cutrera</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Presentación de libros y revistas</h5>
+<p class="prog-sub-meta"><span>Sala De Haro · Coordina: Leonardo Daniel Mársico</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Exposición de pósteres digitales</h5>
+<p class="prog-sub-meta"><span>Aula 6 · Coordina: Fabián Martins</span></p>
+
+</li>
+</ul>
+<p><strong>Encuentro de cátedras de Vida en la Naturaleza / Prácticas en la Naturaleza</strong> · Lugar: Aula 12 · Coordina: María Salazar</p>
+<p><strong>Encuentro de cátedras de Prácticas de la Enseñanza</strong> · Lugar: Aula 11 · Coordina: Federico Pizzorno</p>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">19:30 a 20:00</div>
+<div class="prog-body">
+<h4>Intervención artística: Dojo Kobayashi Do</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Hall central</p>
+</div>
+</div>
+</div><div class="prog-day" id="prog-viernes">
+<h3 class="prog-day-title">Viernes 9 de octubre</h3>
+<div class="prog-item prog-panel">
+<div class="prog-time">9:00 a 11:00</div>
+<div class="prog-body">
+<span class="prog-tag">Panel 2</span>
+<h4>“Accesibilidad y Educación Física en Clave de Derechos: desafíos, configuraciones de apoyo y trayectorias inclusivas.”</h4>
+<p class="prog-meta"><strong>Panelistas:</strong> Leroy Mendoza, Christopher Espada, Malena Farías</p>
+<p class="prog-meta"><strong>Coordina:</strong> Silvia Zanabria</p>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna</p>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">11:00 a 11:15</div>
+<div class="prog-body"><h4>Pausa</h4></div>
+</div>
+<div class="prog-item">
+<div class="prog-time">11:15 a 13:15</div>
+<div class="prog-body">
+<h4>Diálogos y talleres</h4>
+<p><strong>Diálogos sobre el Panel 2</strong> · Lugar: Aula 1 · Coordinan: Sofía Azzarri e Isabel Huaiquil</p>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Prácticas artísticas corporales en diálogo: La acción dramática y las prácticas gímnicas</h5>
+<p class="taller-people"><span class="taller-names">Malen Gil, Schnaidler Rolando</span><span class="taller-inst">ESBA Neuquén / FACEP - Universidad Nacional del Comahue</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">Formación y accesibilidad en los deportes de conjunto. Hockey y softbol</h5>
+<p class="taller-people"><span class="taller-names">Carballo Lourdes, Sgrinzi Cinthia, Fernández Cesar</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 8 a 30</span></p>
+</li>
+<li class="taller">
+<h5 class="taller-title">La Reorganización Postural: el diálogo entre la salud postural y el aprendizaje del movimiento sensible</h5>
+<p class="taller-people"><span class="taller-names">Malen Lozano</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Aula 11</span><span class="taller-fact"><b>Cupo</b> 5 a 20</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">Escalada indoor en el marco de las clases de Educación Física</h5>
+<p class="taller-people"><span class="taller-names">López Eduardo, Reising Lilen, Danesi Mariana</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 20</span></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">13:15 a 14:00</div>
+<div class="prog-body">
+<h4>Pausa con intervención artística: prácticas de movimiento consciente a cargo de Camilu y DeRose Method. Performer Kike Maureira</h4>
+</div>
+</div>
+<div class="prog-item prog-mesa">
+<div class="prog-time">14:00 a 16:00</div>
+<div class="prog-body">
+<h4>Mesas de ponencias</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 1 – Eje 2 “Educación Física en clave de derechos: géneros, accesibilidad e interculturalidad”</h5>
+<p class="prog-sub-meta"><span>Aula Magna · Coordina: Sofía Azzarri</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 3 “La Educación Física en prácticas lúdico recreativas y deportivas en el entorno natural y urbano”</h5>
+<p class="prog-sub-meta"><span>Aula 1 · Coordina: Mónica Palacio</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 4 “Educación Física desde una dimensión histórica, política y sociocultural”</h5>
+<p class="prog-sub-meta"><span>Aula 11 · Coordinan: Marina Copolechio y Daniela Carrasco</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 5 “Educación Física, bienestar y salud” junto a Mesa 2 – Eje 6 “Entrenamiento y rendimiento en la Educación Física”</h5>
+<p class="prog-sub-meta"><span>Sala de Haro · Coordina: Karina Cutrera</span></p>
+
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-taller">
+<div class="prog-time">14:30 a 16:30</div>
+<div class="prog-body">
+<h4>Talleres</h4>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Atención, respiración y economía de esfuerzo en el rendimiento humano</h5>
+<p class="taller-people"><span class="taller-names">Massa Daniela Cheb Terrab y María Maureira Enrique</span><span class="taller-inst">DeRose Method Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 8 a 20</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">“La cabeza piensa donde los pies juegan”: el juego como protagonista de las prácticas pedagógicas creativas</h5>
+<p class="taller-people"><span class="taller-names">Salazar María y Simari Pablo</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 20 a 50</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">El Netball como variante deportiva para las clases de Educación Física escolar</h5>
+<p class="taller-people"><span class="taller-names">Maximiliano Cohen</span><span class="taller-inst">Federación Argentina de Netball</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 30 - no excluyente</span> </p>
+
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-pausa">
+<div class="prog-time">16:30 a 17:00</div>
+<div class="prog-body"><h4>Pausa</h4></div>
+</div>
+<div class="prog-item prog-mesa">
+<div class="prog-time">17:00 a 19:00</div>
+<div class="prog-body">
+<h4>Mesas de ponencias y talleres</h4>
+<ul class="prog-sublist">
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 2 – Eje 2 “Educación Física en clave de derechos: géneros, accesibilidad e interculturalidad”</h5>
+<p class="prog-sub-meta"><span>Sala de Haro · Coordinan: Daniela Carrasco y Silvia Zanabria</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 3 – Eje 3 “La Educación Física en prácticas lúdico recreativas y deportivas en el entorno natural y urbano”</h5>
+<p class="prog-sub-meta"><span>Aula 11 · Coordina: Mónica Palacio</span></p>
+
+</li>
+<li class="prog-sub">
+<h5 class="prog-sub-title">Mesa 3 – Eje 4 “Educación Física desde una dimensión histórica, política y sociocultural”</h5>
+<p class="prog-sub-meta"><span>Aula 1 · Coordinan: Mariano Chiappe, Gustavo Cayún Pichunlef, José María Vallina</span></p>
+
+</li>
+</ul>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">La Educación Ambiental en la Escuela</h5>
+<p class="taller-people"><span class="taller-names">Caveri Camila, Re Melina, Peña Mariana</span><span class="taller-inst">Universidad Nacional del Comahue Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 20 a 50</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">El Bádminton como Deporte Escolar</h5>
+<p class="taller-people"><span class="taller-names">Arribere Santiago</span><span class="taller-inst">Asociación Barilochense de Bádminton</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 50</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">Prácticas luctatorias y su enseñanza en la Educación Física Escolar: aproximación conceptual y propuesta práctica desde un modelo comprensivo centrado en el juego</h5>
+<p class="taller-people"><span class="taller-names">Maximiliano Berrondo</span><span class="taller-inst">Universidad Provincial de Córdoba</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-acto">
+<div class="prog-time">19:45</div>
+<div class="prog-body">
+<h4>Acto homenaje a las trayectorias docentes en la formación del Profesorado de Educación Física del CRUB + Encuentro cultural abierto a todxs los participantes del congreso</h4>
+<p>Intervención cultural y momento de encuentro festivo: artistas invitados Hugo González (Jazmín de Luna), Compañía de danza municipal La Llave y Grupo Capoeira Oriaxé Bariloche.</p>
+<p class="prog-meta"><strong>Lugar:</strong> Gimnasio CRUB</p>
+<p class="prog-meta"><strong>Coordina:</strong> César Fernández</p>
+</div>
+</div>
+</div><div class="prog-day" id="prog-sabado">
+<h3 class="prog-day-title">Sábado 10 de octubre</h3>
+<div class="prog-item prog-panel">
+<div class="prog-time">9:00 a 11:00</div>
+<div class="prog-body">
+<span class="prog-tag">Panel 3</span>
+<h4>“Desafíos actuales en Educación Física: transformaciones, tensiones y reconfiguraciones de sus campos de intervención.”</h4>
+<p>Introducción con la proyección del video danza <em>Kalul</em>, de Sol Semisa y Ana Nieto (7 minutos).</p>
+<p class="prog-meta"><strong>Panelistas:</strong> Pablo Scharagrodsky; Sandro Rivas Pichicura; Marina Copolechio</p>
+<p class="prog-meta"><strong>Coordina:</strong> Fabián Martins</p>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna</p>
+</div>
+</div>
+<div class="prog-item">
+<div class="prog-time">11:30 a 13:30</div>
+<div class="prog-body">
+<h4>Diálogos y talleres</h4>
+<p><strong>Diálogos sobre el Panel 3</strong> · Lugar: Aula 6 · Coordina: Fabián Martins</p>
+<p class="taller-group">Talleres · Coordina: María Salazar</p>
+<ul class="taller-list">
+<li class="taller">
+<h5 class="taller-title">Newcom ¿El deporte de las personas mayores?</h5>
+<p class="taller-people"><span class="taller-names">Sgrinzi Cinthia, Hernández Antu</span><span class="taller-inst">Subsecretaría de deportes Bariloche</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> Máx. 30</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">“Bitácora intempestiva”. Una poética del AYNI (Recreación comunitaria)</h5>
+<p class="taller-people"><span class="taller-names">Luciano Mercado</span><span class="taller-inst">Universidad Católica de Salta</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Hall del Gimnasio</span><span class="taller-fact"><b>Cupo</b> Máx. 40</span> </p>
+
+</li>
+<li class="taller">
+<h5 class="taller-title">Prácticas corporales constitutivas de la conciencia del/ de la Otro/a</h5>
+<p class="taller-people"><span class="taller-names">Jorge Gómez</span><span class="taller-inst">UFLO</span></p>
+<p class="taller-facts"><span class="taller-fact"><b>Lugar</b> Gimnasio CRUB</span><span class="taller-fact"><b>Cupo</b> 12 a 60</span> </p>
+
+</li>
+</ul>
+</div>
+</div>
+<div class="prog-item prog-acto">
+<div class="prog-time">13:30 a 14:30</div>
+<div class="prog-body">
+<h4>Acto de clausura con intervención artística</h4>
+<p class="prog-meta"><strong>Lugar:</strong> Aula Magna</p>
+</div>
+</div>
+</div></div>
+      <footer>El listado de ponencias de cada mesa y la descripción de los talleres están en huayca.crub.uncoma.edu.ar/congresoEF</footer>
+    </div></body></html>

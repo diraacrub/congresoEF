@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>QR mesa – Programa</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --azul: #14375a; --azul2: #1f5f8b; --tinta: #1d2b38; --gris: #5d6d7e;
+        --panel: #1f5f8b; --mesa: #0e7c7b; --taller: #3f8f3a; --acto: #b9770e; --pausa: #95a5a6; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Source Sans 3', 'DejaVu Sans', sans-serif; color: var(--tinta); background: #fff; }
+
+    @page { size: A4 portrait; margin: 0; }
+    .hoja { width: 210mm; height: 297mm; position: relative; overflow: hidden; }
+    .mitad { height: 148.5mm; display: flex; align-items: center; gap: 8mm; padding: 12mm 14mm; }
+    .mitad:first-child { transform: rotate(180deg); }
+    .txt { flex: 1; }
+    .marca { display: flex; align-items: center; gap: 3mm; font-size: 9.5pt; line-height: 1.2; color: var(--gris); font-weight: 600; }
+    .marca img { height: 15mm; }
+    h1 { margin: 6mm 0 4mm; font-size: 34pt; line-height: 1; font-weight: 800; color: var(--azul); }
+    .sub { font-size: 13pt; line-height: 1.3; }
+    .fechas { margin-top: 5mm; font-size: 11pt; line-height: 1.3; font-weight: 700; color: var(--azul2); }
+    .qr { width: 92mm; text-align: center; }
+    .qr img { width: 92mm; height: 92mm; display: block; }
+    .qr p { margin-top: 2.5mm; font-size: 9.5pt; color: var(--gris); }
+    .pliegue { position: absolute; left: 0; right: 0; top: 148.5mm; border-top: 0.3mm dashed #b0b8c0; }
+    .pliegue span { position: absolute; right: 4mm; top: -2.2mm; background: #fff; padding: 0 1.5mm; font-size: 6.5pt; color: #9aa4ae; }
+    </style></head><body><div class="hoja">
+    <div class="mitad">
+      <div class="txt">
+        <div class="marca"><img src="../static/Logo%20educacion%20fisica.jpg" alt=""><span>VII Congreso Patagónico de<br>Educación Física y Formación Docente</span></div>
+        <h1>Programa<br>del Congreso</h1>
+        <p class="sub">Escaneá el código con la cámara de tu celular para ver horarios, aulas, mesas y talleres.</p>
+        <p class="fechas">8, 9 y 10 de octubre de 2026<br>CRUB · Bariloche</p>
+      </div>
+      <div class="qr"><img src="qr-programa.svg" alt="QR al programa"><p>huayca.crub.uncoma.edu.ar/congresoEF</p></div>
+    </div>
+    <div class="mitad">
+      <div class="txt">
+        <div class="marca"><img src="../static/Logo%20educacion%20fisica.jpg" alt=""><span>VII Congreso Patagónico de<br>Educación Física y Formación Docente</span></div>
+        <h1>Programa<br>del Congreso</h1>
+        <p class="sub">Escaneá el código con la cámara de tu celular para ver horarios, aulas, mesas y talleres.</p>
+        <p class="fechas">8, 9 y 10 de octubre de 2026<br>CRUB · Bariloche</p>
+      </div>
+      <div class="qr"><img src="qr-programa.svg" alt="QR al programa"><p>huayca.crub.uncoma.edu.ar/congresoEF</p></div>
+    </div><div class="pliegue"><span>doblar aquí</span></div></div></body></html>

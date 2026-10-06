@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>QR A4 – Programa</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --azul: #14375a; --azul2: #1f5f8b; --tinta: #1d2b38; --gris: #5d6d7e;
+        --panel: #1f5f8b; --mesa: #0e7c7b; --taller: #3f8f3a; --acto: #b9770e; --pausa: #95a5a6; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Source Sans 3', 'DejaVu Sans', sans-serif; color: var(--tinta); background: #fff; }
+
+    @page { size: A4 portrait; margin: 0; }
+    .hoja { width: 210mm; height: 297mm; display: flex; flex-direction: column; }
+    header { background: linear-gradient(135deg, var(--azul) 0%, var(--azul2) 100%); color: #fff;
+             padding: 12mm 16mm 10mm; text-align: center; }
+    header .org { font-size: 10pt; letter-spacing: .03em; opacity: .9; }
+    header h2 { margin-top: 3mm; font-size: 17pt; line-height: 1.2; font-weight: 700; }
+    header .lema { margin-top: 2mm; font-size: 11.5pt; font-style: italic; opacity: .9; }
+    main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 16mm; }
+    h1 { font-size: 54pt; line-height: 1; font-weight: 800; color: var(--azul); }
+    .sub { margin-top: 4mm; font-size: 17pt; line-height: 1.3; }
+    .qr { margin-top: 10mm; width: 125mm; height: 125mm; }
+    .url { margin-top: 5mm; font-size: 12pt; color: var(--gris); }
+    footer { display: flex; align-items: center; justify-content: space-between; padding: 0 16mm 12mm; }
+    footer img { height: 22mm; }
+    footer .dat { text-align: right; font-size: 13pt; line-height: 1.35; font-weight: 700; color: var(--azul2); }
+    footer .dat span { font-weight: 400; color: var(--gris); font-size: 11pt; }
+    </style></head><body>
+    <div class="hoja">
+      <header>
+        <p class="org">Universidad Nacional del Comahue · Centro Regional Universitario Bariloche</p>
+        <h2>VII Congreso Patagónico, IV Nacional y I Internacional de Educación Física y Formación Docente</h2>
+        <p class="lema">Desafíos e interrogantes de prácticas y saberes en movimiento</p>
+      </header>
+      <main>
+        <h1>Programa<br>del Congreso</h1>
+        <p class="sub">Escaneá el código con la cámara de tu celular<br>para ver horarios, aulas, mesas y talleres</p>
+        <img class="qr" src="qr-programa.svg" alt="QR al programa">
+        <p class="url">huayca.crub.uncoma.edu.ar/congresoEF</p>
+      </main>
+      <footer>
+        <img src="../static/Logo%20educacion%20fisica.jpg" alt="">
+        <p class="dat">8, 9 y 10 de octubre de 2026<br><span>Centro Regional Universitario Bariloche · Quintral 1250</span></p>
+      </footer>
+    </div></body></html>
